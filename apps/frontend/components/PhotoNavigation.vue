@@ -71,11 +71,48 @@
           @click="navigateTo(item.path)"
         >
           <div class="nav-icon">
-            {{ item.icon }}
-            <!-- Notification Badge (example for Book Now) -->
-            <div v-if="item.path === '/booking' && hasNewBookings" class="notification-badge">
-              <span>1</span>
-            </div>
+            <!-- Home Icon -->
+            <svg v-if="item.path === '/'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
+              <path v-if="currentPath === item.path" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path v-else d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            
+            <!-- Gallery Icon -->
+            <svg v-else-if="item.path === '/gallery'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
+              <path v-if="currentPath === item.path" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              <path v-else d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            
+            <!-- Services Icon -->
+            <svg v-else-if="item.path === '/services'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
+              <path v-if="currentPath === item.path" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path v-if="currentPath === item.path" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path v-else d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path v-if="currentPath === item.path" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path v-else d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            
+            <!-- About Icon -->
+            <svg v-else-if="item.path === '/about'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
+              <path v-if="currentPath === item.path" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              <path v-else d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            
+            <!-- Booking Icon -->
+            <svg v-else-if="item.path === '/booking'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
+              <path v-if="currentPath === item.path" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              <path v-else d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <!-- Notification Badge -->
+              <div v-if="hasNewBookings" class="notification-badge">
+                <span>1</span>
+              </div>
+            </svg>
+            
+            <!-- Contact Icon -->
+            <svg v-else-if="item.path === '/contact'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
+              <path v-if="currentPath === item.path" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              <path v-else d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
           </div>
           <div class="nav-label">{{ item.label }}</div>
         </div>
@@ -96,12 +133,12 @@ const isNavigationOpen = ref(false)
 const hasNewBookings = ref(true) // Example: you can make this dynamic
 
 const navigationItems = [
-  { path: '/', label: 'Home', icon: '🏠' },
-  { path: '/gallery', label: 'Gallery', icon: '📸' },
-  { path: '/services', label: 'Services', icon: '⚙️' },
-  { path: '/about', label: 'About', icon: '👨‍💼' },
-  { path: '/booking', label: 'Book', icon: '📅' },
-  { path: '/contact', label: 'Contact', icon: '📧' }
+  { path: '/', label: 'Home' },
+  { path: '/gallery', label: 'Gallery' },
+  { path: '/services', label: 'Services' },
+  { path: '/about', label: 'About' },
+  { path: '/booking', label: 'Book' },
+  { path: '/contact', label: 'Contact' }
 ]
 
 const toggleNavigation = () => {
@@ -142,17 +179,16 @@ watch(currentPath, () => {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: linear-gradient(135deg, #0a0f1c 0%, #1e293b 100%);
-  border-top: 1px solid rgba(129, 140, 248, 0.2);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(20px);
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 12px 0 8px 0;
+  padding: 8px 0 4px 0;
   max-width: 100%;
   margin: 0 auto;
 }
@@ -161,84 +197,88 @@ watch(currentPath, () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8px 12px;
+  padding: 4px 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 12px;
+  transition: all 0.2s ease;
+  border-radius: 8px;
   min-width: 60px;
   position: relative;
 }
 
 .nav-item:hover {
-  background: rgba(129, 140, 248, 0.1);
-  transform: translateY(-2px);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .nav-item.active {
-  background: rgba(129, 140, 248, 0.15);
-  border: 1px solid rgba(129, 140, 248, 0.3);
+  background: transparent;
 }
 
 .nav-icon {
   position: relative;
-  font-size: 24px;
-  margin-bottom: 6px;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
-.nav-item.active .nav-icon {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 8px rgba(129, 140, 248, 0.5));
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.2s ease;
+}
+
+.icon.filled {
+  color: #0a66c2;
+}
+
+.icon:not(.filled) {
+  color: #666666;
+}
+
+.nav-item.active .icon {
+  color: #0a66c2;
 }
 
 .nav-label {
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
   line-height: 1.2;
-  color: #94a3b8;
-  transition: all 0.3s ease;
+  color: #666666;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .nav-item.active .nav-label {
-  color: #818cf8;
-  font-weight: 600;
+  color: #0a66c2;
+  font-weight: 500;
 }
 
 .nav-item:hover .nav-label {
-  color: #cbd5e1;
+  color: #0a66c2;
 }
 
-/* Notification Badge */
+/* Notification Badge - LinkedIn Style */
 .notification-badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  top: -6px;
+  right: -6px;
+  background: #d11124;
   color: white;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  border: 2px solid #0a0f1c;
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
+  font-size: 10px;
+  font-weight: 600;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Desktop Camera Trigger */

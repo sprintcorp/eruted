@@ -1,1 +1,1 @@
-web: cd apps/frontend && npm run build && node .output/server/index.mjs
+web: cd apps/frontend && node .output/server/index.mjs

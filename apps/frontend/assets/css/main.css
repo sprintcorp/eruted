@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-primary-1000 text-secondary-50 font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-primary-1000;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-500;
+  }
+}
+
+@layer components {
+  /* Button styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .btn-accent {
+    @apply bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-secondary-900/80 backdrop-blur-xl rounded-2xl p-8 border border-secondary-800/50 hover:border-primary-500/50 hover:shadow-2xl hover:shadow-primary-500/20 transition-all duration-300 transform hover:-translate-y-2;
+  }
+
+  .card-glass {
+    @apply bg-secondary-900/50 backdrop-blur-xl rounded-2xl p-8 border border-secondary-700/30 hover:border-primary-400/50 hover:shadow-glow hover:shadow-primary-500/30 transition-all duration-300;
+  }
+
+  /* Input styles */
+  .input-primary {
+    @apply w-full px-4 py-3 bg-secondary-800 border border-secondary-700 rounded-xl text-white placeholder-secondary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300;
+  }
+
+  /* Text gradients */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-accent {
+    @apply bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent;
+  }
+
+  /* Photography gear themed elements */
+  .camera-icon {
+    @apply animate-camera-shutter;
+  }
+
+  .lens-icon {
+    @apply animate-lens-focus;
+  }
+
+  .film-icon {
+    @apply animate-film-roll;
+  }
+
+  .floating-element {
+    @apply animate-float opacity-10 pointer-events-none;
+  }
+
+  /* Glass effect */
+  .glass-effect {
+    @apply bg-secondary-900/20 backdrop-blur-xl border border-secondary-700/30;
+  }
+
+  /* Hero section background */
+  .hero-bg {
+    @apply bg-gradient-to-br from-primary-1000 via-primary-950 to-secondary-950;
+  }
+
+  /* Section backgrounds */
+  .section-bg-primary {
+    @apply bg-primary-1000;
+  }
+
+  .section-bg-secondary {
+    @apply bg-secondary-950;
+  }
+
+  .section-bg-accent {
+    @apply bg-secondary-900/50;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-8 transition-all duration-700;
+  }
+
+  .animate-on-scroll.animate {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Photography pattern backgrounds */
+  .bg-photo-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(55, 48, 163, 0.05) 0%, transparent 50%);
+  }
+
+  /* Text shadows */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Responsive text */
+  .text-responsive {
+    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
+  }
+
+  .text-responsive-sm {
+    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+  }
+}

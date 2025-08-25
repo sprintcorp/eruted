@@ -1,7 +1,7 @@
 <template>
   <div class="photo-navigation">
     <!-- Desktop Camera Navigation (hidden on mobile) -->
-    <div class="hidden md:block">
+    <div class="hidden md:block desktop-nav">
       <!-- Camera Icon Trigger -->
       <div
         class="camera-trigger"
@@ -28,33 +28,39 @@
         </div>
       </div>
 
-      <!-- Photography Navigation Elements -->
+      <!-- Single Photography Navigation Menu -->
       <Transition name="photo-nav">
-        <div v-if="isNavigationOpen" class="photo-nav-elements">
-          <!-- Film Strip Navigation -->
-          <div class="film-strip-nav">
-            <div class="film-perforations">
-              <div class="perforation" v-for="n in 8" :key="n"></div>
+        <div v-if="isNavigationOpen" class="photo-nav-menu">
+          <div class="nav-header">
+            <div class="brand-logo">
+              <div class="camera-icon">📷</div>
+              <div class="brand-text">
+                <div class="brand-name">Uncle Eruted</div>
+                <div class="brand-subtitle">Photography</div>
+              </div>
             </div>
-            <div class="film-frames">
+            <div class="close-btn" @click="toggleNavigation">×</div>
+          </div>
+          
+          <div class="nav-content">
+            <div class="nav-items">
               <div
-                v-for="(item, index) in navigationItems"
+                v-for="item in navigationItems"
                 :key="item.path"
-                class="film-frame"
+                class="nav-item"
                 :class="{ 'active': currentPath === item.path }"
                 @click="navigateTo(item.path)"
               >
-                <div class="frame-content">
-                  <div class="frame-icon">{{ item.icon }}</div>
-                  <div class="frame-label">{{ item.label }}</div>
-                </div>
+                <div class="item-icon">{{ getItemIcon(item.path) }}</div>
+                <div class="item-label">{{ item.label }}</div>
               </div>
             </div>
-          </div>
-
-          <!-- Close Button -->
-          <div class="close-nav" @click="toggleNavigation">
-            <div class="close-icon">×</div>
+            
+            <div class="nav-actions">
+              <button class="btn-primary" @click="navigateTo('/booking')">
+                Book Your Session
+              </button>
+            </div>
           </div>
         </div>
       </Transition>
@@ -64,7 +70,7 @@
     <div class="md:hidden mobile-bottom-nav">
       <div class="nav-container">
         <div
-          v-for="(item, index) in navigationItems"
+          v-for="item in navigationItems"
           :key="item.path"
           class="nav-item"
           :class="{ 'active': currentPath === item.path }"
@@ -79,8 +85,8 @@
             
             <!-- Gallery Icon -->
             <svg v-else-if="item.path === '/gallery'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
-              <path v-if="currentPath === item.path" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              <path v-else d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path v-if="currentPath === item.path" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z"/>
+              <path v-else d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
             </svg>
             
             <!-- Services Icon -->
@@ -101,7 +107,7 @@
             <!-- Booking Icon -->
             <svg v-else-if="item.path === '/booking'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
               <path v-if="currentPath === item.path" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              <path v-else d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path v-else d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2v12a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
               <!-- Notification Badge -->
               <div v-if="hasNewBookings" class="notification-badge">
                 <span>1</span>
@@ -110,8 +116,8 @@
             
             <!-- Contact Icon -->
             <svg v-else-if="item.path === '/contact'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
-              <path v-if="currentPath === item.path" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              <path v-else d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path v-if="currentPath === item.path" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2v10a2 2 0 002 2z"/>
+              <path v-else d="M3 8l7.89 4.26a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2v10a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
             </svg>
           </div>
           <div class="nav-label">{{ item.label }}</div>
@@ -140,6 +146,18 @@ const navigationItems = [
   { path: '/booking', label: 'Book' },
   { path: '/contact', label: 'Contact' }
 ]
+
+const getItemIcon = (path: string) => {
+  const icons: Record<string, string> = {
+    '/': '🏠',
+    '/gallery': '📸',
+    '/services': '⚙️',
+    '/about': '👤',
+    '/booking': '📅',
+    '/contact': '📧'
+  }
+  return icons[path] || '🔗'
+}
 
 const toggleNavigation = () => {
   isNavigationOpen.value = !isNavigationOpen.value
@@ -172,6 +190,276 @@ watch(currentPath, () => {
   z-index: 1000;
 }
 
+/* Desktop Navigation */
+.desktop-nav {
+  position: relative;
+}
+
+.camera-trigger {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.camera-trigger:hover {
+  transform: scale(1.05);
+}
+
+.camera-trigger.active {
+  transform: scale(1.1);
+}
+
+.camera-body {
+  width: 80px;
+  height: 60px;
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 2px solid #0ea5e9;
+}
+
+.camera-lens {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #0f172a, #1e293b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #0ea5e9;
+}
+
+.lens-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid #0ea5e9;
+}
+
+.lens-ring.outer {
+  width: 36px;
+  height: 36px;
+}
+
+.lens-ring.middle {
+  width: 28px;
+  height: 28px;
+}
+
+.lens-ring.inner {
+  width: 20px;
+  height: 20px;
+}
+
+.lens-aperture {
+  width: 12px;
+  height: 12px;
+  background: #0ea5e9;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.lens-aperture.open {
+  background: #fbbf24;
+  box-shadow: 0 0 20px #fbbf24;
+}
+
+.camera-top {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 8px;
+  background: #0f172a;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.flash {
+  width: 12px;
+  height: 6px;
+  background: #fbbf24;
+  border-radius: 2px;
+}
+
+.viewfinder {
+  width: 16px;
+  height: 6px;
+  background: #0ea5e9;
+  border-radius: 2px;
+}
+
+.camera-grip {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 8px;
+  background: #0f172a;
+  border-radius: 4px;
+}
+
+.click-hint {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+/* Desktop Navigation Menu */
+.photo-nav-menu {
+  position: absolute;
+  top: 0;
+  right: 100px;
+  width: 300px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid #0ea5e9;
+  backdrop-filter: blur(20px);
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.camera-icon {
+  font-size: 24px;
+  filter: drop-shadow(0 0 10px #fbbf24);
+}
+
+.brand-text {
+  color: white;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.brand-subtitle {
+  font-size: 12px;
+  color: #0ea5e9;
+  font-weight: 500;
+}
+
+.close-btn {
+  width: 32px;
+  height: 32px;
+  background: #0ea5e9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #0284c7;
+  transform: scale(1.1);
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.nav-item:hover {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: #0ea5e9;
+  transform: translateY(-2px);
+}
+
+.nav-item.active {
+  background: rgba(14, 165, 233, 0.2);
+  border-color: #0ea5e9;
+}
+
+.item-icon {
+  font-size: 24px;
+  filter: drop-shadow(0 0 8px #0ea5e9);
+}
+
+.item-label {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.nav-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(14, 165, 233, 0.4);
+}
+
 /* Mobile Bottom Navigation - LinkedIn Style */
 .mobile-bottom-nav {
   position: fixed;
@@ -189,8 +477,6 @@ watch(currentPath, () => {
   justify-content: space-around;
   align-items: center;
   padding: 8px 0 4px 0;
-  max-width: 100%;
-  margin: 0 auto;
 }
 
 .nav-item {
@@ -198,11 +484,10 @@ watch(currentPath, () => {
   flex-direction: column;
   align-items: center;
   padding: 4px 8px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
-  border-radius: 8px;
   min-width: 60px;
-  position: relative;
 }
 
 .nav-item:hover {
@@ -218,10 +503,6 @@ watch(currentPath, () => {
   width: 24px;
   height: 24px;
   margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
 }
 
 .icon {
@@ -245,11 +526,10 @@ watch(currentPath, () => {
 .nav-label {
   font-size: 11px;
   font-weight: 400;
+  color: #666666;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   text-align: center;
   line-height: 1.2;
-  color: #666666;
-  transition: all 0.2s ease;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .nav-item.active .nav-label {
@@ -261,16 +541,15 @@ watch(currentPath, () => {
   color: #0a66c2;
 }
 
-/* Notification Badge - LinkedIn Style */
 .notification-badge {
   position: absolute;
   top: -6px;
   right: -6px;
   background: #d11124;
   color: white;
-  border-radius: 50%;
   width: 18px;
   height: 18px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -281,272 +560,37 @@ watch(currentPath, () => {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Desktop Camera Trigger */
-.camera-trigger {
-  cursor: pointer;
-}
-
-.camera-trigger:hover {
-  transform: scale(1.1);
-}
-
-.camera-trigger.active .camera-lens {
-  animation: lens-focus 0.5s ease-in-out;
-}
-
-.camera-body {
-  position: relative;
-  width: 80px;
-  height: 60px;
-  background: linear-gradient(145deg, #1e3a8a, #1e40af);
-  border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 2px solid #3b82f6;
-}
-
-.camera-lens {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #0f172a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lens-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid #64748b;
-}
-
-.lens-ring.outer {
-  width: 36px;
-  height: 36px;
-}
-
-.lens-ring.middle {
-  width: 28px;
-  height: 28px;
-}
-
-.lens-ring.inner {
-  width: 20px;
-  height: 20px;
-}
-
-.lens-aperture {
-  width: 16px;
-  height: 16px;
-  background: #1e293b;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.lens-aperture.open {
-  background: #3b82f6;
-  box-shadow: 0 0 20px #3b82f6;
-}
-
-.camera-top {
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 8px;
-  background: #1e293b;
-  border-radius: 4px;
-}
-
-.flash {
-  position: absolute;
-  top: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 4px;
-  background: #fbbf24;
-  border-radius: 2px;
-}
-
-.viewfinder {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 6px;
-  height: 4px;
-  background: #64748b;
-  border-radius: 1px;
-}
-
-.camera-grip {
-  position: absolute;
-  bottom: -4px;
-  right: -4px;
-  width: 8px;
-  height: 20px;
-  background: #374151;
-  border-radius: 4px;
-}
-
-.click-hint {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 8px;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-  opacity: 0;
-  animation: fadeInOut 3s ease-in-out infinite;
-}
-
-@keyframes fadeInOut {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-
-/* Photo Navigation Elements */
-.photo-nav-elements {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.film-strip-nav {
-  background: linear-gradient(135deg, #1e293b, #334155);
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border: 2px solid #475569;
-  min-width: 300px;
-}
-
-.film-perforations {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
-
-.perforation {
-  width: 8px;
-  height: 8px;
-  background: #64748b;
-  border-radius: 50%;
-}
-
-.film-frames {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-
-.film-frame {
-  background: linear-gradient(135deg, #334155, #475569);
-  border-radius: 12px;
-  padding: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-}
-
-.film-frame:hover {
-  transform: translateY(-5px);
-  border-color: #818cf8;
-  box-shadow: 0 10px 25px rgba(129, 140, 248, 0.3);
-}
-
-.film-frame.active {
-  border-color: #818cf8;
-  background: linear-gradient(135deg, #3730a3, #4338ca);
-}
-
-.frame-content {
-  text-align: center;
-}
-
-.frame-icon {
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-
-.frame-label {
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.close-nav {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 30px;
-  height: 30px;
-  background: #ef4444;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid white;
-}
-
-.close-nav:hover {
-  transform: scale(1.1);
-  background: #dc2626;
-}
-
-.close-icon {
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-}
-
 /* Transitions */
 .photo-nav-enter-active,
 .photo-nav-leave-active {
   transition: all 0.3s ease;
 }
 
-.photo-nav-enter-from,
-.photo-nav-leave-to {
+.photo-nav-enter-from {
   opacity: 0;
-  transform: translateY(20px) scale(0.9);
+  transform: translateX(20px) scale(0.9);
 }
 
-@keyframes lens-focus {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.2); }
+.photo-nav-leave-to {
+  opacity: 0;
+  transform: translateX(20px) scale(0.9);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .photo-navigation {
+  .desktop-nav {
     display: none;
   }
-
+  
   .mobile-bottom-nav {
     display: block;
   }
 }
 
-@media (min-width: 769px) {
+/* Force mobile navigation to show on mobile devices */
+@media (max-width: 768px) {
   .mobile-bottom-nav {
-    display: none;
+    display: block !important;
   }
 }
 </style>

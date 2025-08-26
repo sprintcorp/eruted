@@ -94,52 +94,9 @@ button, a, input, textarea, select {
   transform: translateY(-2px);
 }
 
-/* Photography equipment effects */
-.camera-body {
-  background: linear-gradient(135deg, #0A0F1C 0%, #1E293B 50%, #0A0F1C 100%);
-  box-shadow: 
-    0 0 0 1px rgba(30, 64, 175, 0.2),
-    0 8px 32px rgba(10, 15, 28, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
 
-.lens-reflection {
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
-  animation: shimmer 4s ease-in-out infinite;
-}
 
-/* Animation keyframes */
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
-  50% { transform: translateY(-20px) rotate(180deg); opacity: 0.2; }
-}
-
-@keyframes cameraShutter {
-  0% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.1) rotate(180deg); }
-  100% { transform: scale(1) rotate(360deg); }
-}
-
-@keyframes lensFocus {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.2); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes spotlight {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.1); }
-}
-
-@keyframes depthFloat {
-  0%, 100% { transform: translateZ(0) translateY(0); }
-  50% { transform: translateZ(20px) translateY(-10px); }
-}
 
 /* Responsive utilities */
 @media (max-width: 768px) {

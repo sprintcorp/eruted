@@ -63,12 +63,7 @@ export default {
         'scale-in': 'scaleIn 0.4s ease-out',
         'float': 'float 6s ease-in-out infinite',
         'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
-        'shimmer': 'shimmer 2s linear infinite',
-        'camera-shutter': 'cameraShutter 0.3s ease-in-out',
-        'lens-focus': 'lensFocus 2s ease-in-out infinite',
         'film-roll': 'filmRoll 4s linear infinite',
-        'spotlight': 'spotlight 4s ease-in-out infinite',
-        'depth-float': 'depthFloat 8s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -95,32 +90,12 @@ export default {
           '0%, 100%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.3)' },
           '50%': { boxShadow: '0 0 40px rgba(99, 102, 241, 0.6)' },
         },
-        shimmer: {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(100%)' },
-        },
-        cameraShutter: {
-          '0%': { transform: 'scale(1) rotate(0deg)' },
-          '50%': { transform: 'scale(1.1) rotate(180deg)' },
-          '100%': { transform: 'scale(1) rotate(360deg)' },
-        },
-        lensFocus: {
-          '0%': { transform: 'scale(1)', opacity: '1' },
-          '50%': { transform: 'scale(1.2)', opacity: '0.7' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        },
+
         filmRoll: {
           '0%': { transform: 'translateX(0) rotate(0deg)' },
           '100%': { transform: 'translateX(100px) rotate(360deg)' },
         },
-        spotlight: {
-          '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
-          '50%': { opacity: '0.6', transform: 'scale(1.1)' },
-        },
-        depthFloat: {
-          '0%, 100%': { transform: 'translateZ(0) translateY(0)' },
-          '50%': { transform: 'translateZ(20px) translateY(-10px)' },
-        },
+
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -153,7 +128,7 @@ export default {
         'glow-xl': '0 0 60px rgba(99, 102, 241, 0.7)',
         'depth': '0 20px 60px rgba(10, 15, 28, 0.15)',
         'depth-lg': '0 40px 80px rgba(10, 15, 28, 0.2)',
-        'camera': '0 0 0 1px rgba(30, 64, 175, 0.2), 0 8px 32px rgba(10, 15, 28, 0.1)',
+
       },
       spacing: {
         '18': '4.5rem',

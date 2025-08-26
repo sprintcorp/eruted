@@ -14,8 +14,7 @@
     <!-- Newsletter Modal -->
     <NewsletterModal />
     
-    <!-- Creative Photo Navigation -->
-    <PhotoNavigation />
+
   </div>
 </template>
 
@@ -24,7 +23,7 @@
 import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
 import NewsletterModal from '~/components/NewsletterModal.vue'
-import PhotoNavigation from '~/components/PhotoNavigation.vue'
+
 
 // Main app component
 useHead({
@@ -47,4 +46,17 @@ useHead({
 
 <style>
 /* Global styles are handled in main.css */
+
+/* Hide any hamburger menu icons on mobile */
+@media (max-width: 768px) {
+  /* Hide any elements that might look like hamburger menus */
+  [class*="menu"], [class*="hamburger"], [class*="bars"] {
+    display: none !important;
+  }
+  
+  /* Hide any three-line icons */
+  .hamburger, .menu-icon, .bars {
+    display: none !important;
+  }
+}
 </style>

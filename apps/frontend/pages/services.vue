@@ -275,6 +275,9 @@ import {
   Mail
 } from 'lucide-vue-next'
 
+// Import MobileNav component
+import MobileNav from '~/components/MobileNav.vue'
+
 // Services data
 const services = [
   {

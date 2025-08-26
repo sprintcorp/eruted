@@ -8,10 +8,10 @@
           <div class="flex items-center space-x-3">
             <div class="relative">
               <!-- Camera Body Logo -->
-              <div class="camera-body w-12 h-10 rounded-xl relative overflow-hidden">
+              <div class="header-camera-logo w-12 h-10 rounded-xl relative overflow-hidden">
                 <!-- Lens Aperture -->
                 <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="w-8 h-8 rounded-full border-3 border-white/30 bg-gradient-to-br from-slate-600 to-slate-800 animate-pulse"></div>
+                  <div class="w-8 h-8 rounded-full border-3 border-white/30 bg-gradient-to-br from-slate-600 to-slate-800"></div>
                 </div>
                 <!-- Viewfinder -->
                 <div class="absolute top-1 right-1 w-3 h-3 rounded-full bg-slate-900"></div>
@@ -65,20 +65,20 @@
           </div>
 
           <!-- CTA Button -->
-          <button class="btn-header-primary">
+          <button class="btn-header-primary" @click="navigateTo('/booking')">
             Book Session
           </button>
         </div>
       </div>
     </nav>
 
-    <!-- Mobile Navigation Header -->
+    <!-- Mobile Header - Logo Only -->
     <nav class="md:hidden">
       <div class="px-4 py-3">
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-center">
           <!-- Mobile Logo -->
           <div class="flex items-center space-x-2">
-            <div class="camera-body w-10 h-8 rounded-lg relative overflow-hidden">
+            <div class="header-camera-logo w-10 h-8 rounded-lg relative overflow-hidden">
               <div class="absolute inset-0 flex items-center justify-center">
                 <div class="w-6 h-6 rounded-full border-2 border-white/30 bg-gradient-to-br from-slate-600 to-slate-800"></div>
               </div>
@@ -88,64 +88,6 @@
               <p class="text-xs text-slate-600 leading-tight">Photography</p>
             </div>
           </div>
-
-          <!-- Mobile Menu Button -->
-          <button 
-            @click="toggleMobileMenu"
-            class="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-          >
-            <Menu v-if="!isMobileMenuOpen" class="w-6 h-6 text-slate-900" />
-            <X v-else class="w-6 h-6 text-slate-900" />
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile Menu Dropdown -->
-      <div 
-        v-if="isMobileMenuOpen"
-        class="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-lg"
-      >
-        <div class="px-4 py-4 space-y-3">
-          <NuxtLink 
-            to="/" 
-            class="mobile-nav-link"
-            @click="closeMobileMenu"
-          >
-            Home
-          </NuxtLink>
-          <NuxtLink 
-            to="/gallery" 
-            class="mobile-nav-link"
-            @click="closeMobileMenu"
-          >
-            Gallery
-          </NuxtLink>
-          <NuxtLink 
-            to="/services" 
-            class="mobile-nav-link"
-            @click="closeMobileMenu"
-          >
-            Services
-          </NuxtLink>
-          <NuxtLink 
-            to="/about" 
-            class="mobile-nav-link"
-            @click="closeMobileMenu"
-          >
-            About
-          </NuxtLink>
-          <NuxtLink 
-            to="/contact" 
-            class="mobile-nav-link"
-            @click="closeMobileMenu"
-          >
-            Contact
-          </NuxtLink>
-          <div class="pt-3 border-t border-slate-200">
-            <button class="btn-header-primary w-full">
-              Book Session
-            </button>
-          </div>
         </div>
       </div>
     </nav>
@@ -154,10 +96,13 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { Menu, X } from 'lucide-vue-next'
 
-const isMobileMenuOpen = ref(false)
+const router = useRouter()
 const isScrolled = ref(false)
+
+const navigateTo = (path) => {
+  router.push(path)
+}
 
 const headerClasses = computed(() => {
   if (isScrolled.value) {
@@ -165,14 +110,6 @@ const headerClasses = computed(() => {
   }
   return 'bg-transparent'
 })
-
-const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value
-}
-
-const closeMobileMenu = () => {
-  isMobileMenuOpen.value = false
-}
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
@@ -207,18 +144,15 @@ onUnmounted(() => {
   @apply text-slate-900;
 }
 
-/* Mobile navigation link styles */
-.mobile-nav-link {
-  @apply block py-3 px-4 text-slate-800 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-all duration-200 font-medium;
-}
+
 
 /* Button styles */
 .btn-header-primary {
   @apply bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-slate-800 hover:scale-105 shadow-md hover:shadow-lg;
 }
 
-/* Camera body logo styles */
-.camera-body {
+/* Header camera logo styles */
+.header-camera-logo {
   background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
   box-shadow: 
     0 0 0 1px rgba(30, 64, 175, 0.2),

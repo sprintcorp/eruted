@@ -24,7 +24,7 @@
             <p class="service-description">
               Professional portraits that capture your personality and essence in stunning detail, from headshots to creative artistic portraits.
             </p>
-            <button class="service-cta">
+            <button class="service-cta" @click="navigateTo('/services')">
               Learn More
               <ArrowRight class="w-4 h-4 ml-2" />
             </button>
@@ -38,7 +38,7 @@
             <p class="service-description">
               Timeless wedding memories captured with artistic vision and attention to detail, from engagement to reception.
             </p>
-            <button class="service-cta">
+            <button class="service-cta" @click="navigateTo('/services')">
               Learn More
               <ArrowRight class="w-4 h-4 ml-2" />
             </button>
@@ -52,7 +52,7 @@
             <p class="service-description">
               Cinematic video production that tells your story with emotion and creativity, from events to promotional content.
             </p>
-            <button class="service-cta">
+            <button class="service-cta" @click="navigateTo('/services')">
               Learn More
               <ArrowRight class="w-4 h-4 ml-2" />
             </button>
@@ -66,7 +66,7 @@
             <p class="service-description">
               High-quality product and commercial photography to enhance your business marketing materials and brand presence.
             </p>
-            <button class="service-cta">
+            <button class="service-cta" @click="navigateTo('/services')">
               Learn More
               <ArrowRight class="w-4 h-4 ml-2" />
             </button>
@@ -80,7 +80,7 @@
             <p class="service-description">
               Professional coverage for corporate events, parties, and special occasions with high-quality images.
             </p>
-            <button class="service-cta">
+            <button class="service-cta" @click="navigateTo('/services')">
               Learn More
               <ArrowRight class="w-4 h-4 ml-2" />
             </button>
@@ -94,7 +94,7 @@
             <p class="service-description">
               Professional post-processing and retouching to ensure your images look their absolute best.
             </p>
-            <button class="service-cta">
+            <button class="service-cta" @click="navigateTo('/services')">
               Learn More
               <ArrowRight class="w-4 h-4 ml-2" />
             </button>
@@ -232,22 +232,30 @@
     </section>
 
     <!-- Enhanced Contact CTA Section -->
-    <section class="section contact-cta bg-gradient-to-br from-primary-1000 via-primary-900 to-primary-800 text-white py-20">
+    <section class="section contact-cta py-20" style="background: linear-gradient(135deg, #0A0F1C 0%, #0F172A 50%, #1E293B 100%) !important;">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="animate-fade-in">
-          <h2 class="text-4xl md:text-5xl font-bold mb-8">
+          <h2 class="text-4xl md:text-5xl font-bold mb-8" style="color: white !important;">
             Ready to Capture Your Story?
           </h2>
-          <p class="text-lg md:text-xl text-primary-100 mb-10 max-w-3xl mx-auto leading-relaxed">
+          <p class="text-lg md:text-xl mb-10 max-w-3xl mx-auto leading-relaxed" style="color: white !important;">
             Let's work together to create stunning visual memories that will last a lifetime. 
             Every moment is worth capturing, and every story deserves to be told beautifully.
           </p>
           <div class="flex flex-col sm:flex-row gap-6 justify-center">
-            <button class="btn-white-large">
+            <button 
+              @click="navigateTo('/booking')" 
+              class="btn-white-large" 
+              style="background: white !important; color: #1E293B !important;"
+            >
               <Calendar class="w-5 h-5 mr-3" />
               Book Your Session
             </button>
-            <button class="btn-outline-white-large">
+            <button 
+              @click="navigateTo('/contact')" 
+              class="btn-outline-white-large" 
+              style="border: 2px solid white !important; color: white !important;"
+            >
               <Mail class="w-5 h-5 mr-3" />
               Get in Touch
             </button>
@@ -265,6 +273,12 @@
 // Import components
 import Hero from '~/components/Hero.vue'
 import MobileNav from '~/components/MobileNav.vue'
+
+// Navigation function using Nuxt router
+const router = useRouter()
+const navigateTo = (path) => {
+  router.push(path)
+}
 
 // Import icons
 import { 

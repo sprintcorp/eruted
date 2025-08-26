@@ -12,7 +12,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold">Uncle Eruted Photography</h3>
+            <h3 class="text-2xl font-bold text-slate-900">Uncle Eruted Photography</h3>
           </div>
           <p class="text-slate-700 mb-6 max-w-md">
             Professional photography and videography services that transform your special moments into timeless memories. 
@@ -117,5 +117,30 @@
   footer {
     display: none !important;
   }
+}
+
+/* Force footer text colors to ensure they display properly */
+footer {
+  color: #0F172A !important;
+}
+
+footer h3,
+footer h4,
+footer p,
+footer a,
+footer li {
+  color: inherit !important;
+}
+
+footer .text-slate-900 {
+  color: #0F172A !important;
+}
+
+footer .text-slate-700 {
+  color: #334155 !important;
+}
+
+footer .text-slate-600 {
+  color: #475569 !important;
 }
 </style>

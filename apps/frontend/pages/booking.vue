@@ -88,26 +88,26 @@
 
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label for="phone" class="block text-white font-medium mb-2">Phone Number *</label>
+                      <label for="phone" class="block text-slate-900 font-medium mb-2">Phone Number *</label>
                       <input
                         v-model="form.phone"
                         type="tel"
                         id="phone"
                         required
-                        class="w-full px-4 py-3 bg-white/10 border border-accent-500/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent transition-all duration-300"
+                        class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                         placeholder="Enter your phone number"
                       />
                     </div>
                     
                     <div>
-                      <label for="eventDate" class="block text-white font-medium mb-2">Event Date *</label>
+                      <label for="eventDate" class="block text-slate-900 font-medium mb-2">Event Date *</label>
                       <input
                         v-model="form.eventDate"
                         type="date"
                         id="eventDate"
                         required
                         :min="minDate"
-                        class="w-full px-4 py-3 bg-white/10 border border-accent-500/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent transition-all duration-300"
+                        class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                       />
                     </div>
                   </div>
@@ -115,12 +115,12 @@
                   <!-- Session Details -->
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label for="eventType" class="block text-white font-medium mb-2">Session Type *</label>
+                      <label for="eventType" class="block text-slate-900 font-medium mb-2">Session Type *</label>
                       <select
                         v-model="form.eventType"
                         id="eventType"
                         required
-                        class="w-full px-4 py-3 bg-white/10 border border-accent-500/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent transition-all duration-300"
+                        class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                       >
                         <option value="">Select session type</option>
                         <option value="wedding">Wedding Photography</option>
@@ -132,23 +132,23 @@
                     </div>
                     
                     <div>
-                      <label for="location" class="block text-white font-medium mb-2">Location</label>
+                      <label for="location" class="block text-slate-900 font-medium mb-2">Location</label>
                       <input
                         v-model="form.location"
                         type="text"
                         id="location"
-                        class="w-full px-4 py-3 bg-white/10 border border-accent-500/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent transition-all duration-300"
+                        class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                         placeholder="Where will the session take place?"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label for="budget" class="block text-white font-medium mb-2">Budget Range</label>
+                    <label for="budget" class="block text-slate-900 font-medium mb-2">Budget Range</label>
                     <select
                       v-model="form.budget"
                       id="budget"
-                      class="w-full px-4 py-3 bg-white/10 border border-accent-500/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent transition-all duration-300"
+                      class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     >
                       <option value="">Select budget range</option>
                       <option value="under-500">Under $500</option>
@@ -160,13 +160,13 @@
                   </div>
 
                   <div>
-                    <label for="message" class="block text-white font-medium mb-2">Tell Us About Your Vision *</label>
+                    <label for="message" class="block text-slate-900 font-medium mb-2">Tell Us About Your Vision *</label>
                     <textarea
                       v-model="form.message"
                       id="message"
                       rows="6"
                       required
-                      class="w-full px-4 py-3 bg-white/10 border border-accent-500/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent transition-all duration-300 resize-none"
+                      class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
                       placeholder="Describe your vision, special requirements, or any questions you have..."
                     ></textarea>
                   </div>

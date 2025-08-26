@@ -1,6 +1,3 @@
-/* Import Tailwind CSS with custom color definitions */
-@import './tailwind-custom.css';
-
 /* Global styles */
 html {
   scroll-behavior: smooth;

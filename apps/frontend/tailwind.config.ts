@@ -27,22 +27,8 @@ export default {
           900: '#171717',
           DEFAULT: '#FFFFFF',
         },
-        // Primary: Dark blue (almost black) - Fixed to use standard Tailwind names
-        primary: {
-          50: '#F8FAFC',
-          100: '#F1F5F9',
-          200: '#E2E8F0',
-          300: '#CBD5E1',
-          400: '#94A3B8',
-          500: '#64748B',
-          600: '#475569',
-          700: '#334155',
-          800: '#1E293B',
-          900: '#0F172A',
-          1000: '#0A0F1C',
-        },
         // Photography-inspired accents
-        photo: {
+        accent: {
           lens: '#1E40AF',
           camera: '#1F2937',
           flash: '#F59E0B',

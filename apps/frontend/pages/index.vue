@@ -7,10 +7,10 @@
     <section class="section services-section bg-gradient-to-b from-white-50 to-white-100 py-20">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="section-header text-center mb-16 animate-fade-in">
-          <h2 class="section-title text-4xl md:text-5xl font-bold text-primary-1000 mb-6">
+          <h2 class="section-title text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Our Photography Services
           </h2>
-          <p class="section-subtitle text-lg md:text-xl text-primary-700 max-w-3xl mx-auto leading-relaxed">
+          <p class="section-subtitle text-lg md:text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
             Professional photography and videography services tailored to capture your most precious moments with artistic vision and technical excellence
           </p>
         </div>
@@ -107,10 +107,10 @@
     <section class="section gallery-preview bg-white py-20">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="section-header text-center mb-16 animate-fade-in">
-          <h2 class="section-title text-4xl md:text-5xl font-bold text-primary-1000 mb-6">
+          <h2 class="section-title text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Featured Gallery
           </h2>
-          <p class="section-subtitle text-lg md:text-xl text-primary-700 max-w-3xl mx-auto leading-relaxed">
+          <p class="section-subtitle text-lg md:text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
             Explore a curated selection of our finest work, showcasing the diversity and quality of our photography services
           </p>
         </div>
@@ -191,10 +191,10 @@
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-2 gap-16 items-center">
           <div class="animate-slide-up">
-            <h2 class="text-4xl md:text-5xl font-bold text-primary-1000 mb-8">
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-8">
               Meet Uncle Eruted
             </h2>
-            <p class="text-lg md:text-xl text-primary-700 mb-8 leading-relaxed">
+            <p class="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed">
               A passionate photographer with over 5 years of experience capturing life's most precious moments. 
               Specializing in portrait, wedding, and event photography with a unique artistic vision that transforms 
               ordinary moments into extraordinary memories.
@@ -219,10 +219,10 @@
                 class="w-full h-96 object-cover"
               />
               <!-- Photography Equipment Overlay -->
-              <div class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-800 rounded-2xl flex items-center justify-center shadow-large">
+              <div class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-slate-600 to-slate-800 rounded-2xl flex items-center justify-center shadow-large">
                 <Camera class="w-8 h-8 text-white" />
               </div>
-              <div class="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-large">
+              <div class="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-br from-slate-500 to-slate-700 rounded-xl flex items-center justify-center shadow-large">
                 <Target class="w-6 h-6 text-white" />
               </div>
             </div>

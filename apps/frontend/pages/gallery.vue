@@ -277,7 +277,7 @@
           <!-- Close Button -->
           <button 
             @click="closeLightbox"
-            class="absolute -top-12 right-0 text-white hover:text-primary-300 transition-colors z-10"
+            class="absolute -top-12 right-0 text-white hover:text-slate-300 transition-colors z-10"
           >
             <X class="w-8 h-8" />
           </button>
@@ -285,7 +285,7 @@
           <!-- Navigation Arrows -->
           <button 
             @click="previousItem"
-            class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-primary-300 transition-colors z-10"
+            class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-slate-300 transition-colors z-10"
             :class="{ 'opacity-50 cursor-not-allowed': currentIndex === 0 }"
           >
             <ChevronLeft class="w-8 h-8" />
@@ -293,7 +293,7 @@
           
           <button 
             @click="nextItem"
-            class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-primary-300 transition-colors z-10"
+            class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-slate-300 transition-colors z-10"
             :class="{ 'opacity-50 cursor-not-allowed': currentIndex === filteredGalleryItems.length - 1 }"
           >
             <ChevronRight class="w-8 h-8" />
@@ -311,8 +311,8 @@
             <!-- Image Info -->
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-2xl">
               <h3 class="text-2xl font-bold text-white mb-2">{{ currentLightboxItem.title }}</h3>
-              <p class="text-primary-200">{{ currentLightboxItem.subtitle }}</p>
-              <p class="text-sm text-primary-300 mt-2">{{ currentLightboxItem.description }}</p>
+                      <p class="text-slate-200">{{ currentLightboxItem.subtitle }}</p>
+        <p class="text-sm text-slate-300 mt-2">{{ currentLightboxItem.description }}</p>
             </div>
           </div>
           

@@ -239,29 +239,29 @@
               <!-- What to Expect -->
               <div class="bg-white/80 backdrop-blur-sm border border-white/20 rounded-3xl p-6 shadow-2xl shadow-blue-100/50">
                 <div class="flex items-center mb-6">
-                  <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mr-3">
+                  <div class="w-10 h-10 bg-gradient-to-r from-slate-600 to-slate-800 rounded-2xl flex items-center justify-center mr-3">
                     <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                   </div>
-                  <h3 class="text-xl font-bold text-slate-800">What to Expect</h3>
+                  <h3 class="text-xl font-bold text-black">What to Expect</h3>
                 </div>
-                <ul class="space-y-4 text-slate-700 text-sm">
+                <ul class="space-y-4 text-black text-sm">
                   <li class="flex items-start space-x-3 group">
-                    <div class="w-3 h-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mt-1 flex-shrink-0 animate-pulse shadow-lg"></div>
-                    <span class="group-hover:text-slate-900 transition-colors duration-300">Response within 24 hours</span>
+                    <div class="w-3 h-3 bg-gradient-to-r from-slate-600 to-slate-800 rounded-full mt-1 flex-shrink-0 animate-pulse shadow-lg"></div>
+                    <span class="group-hover:text-slate-700 transition-colors duration-300">Response within 24 hours</span>
                   </li>
                   <li class="flex items-start space-x-3 group">
-                    <div class="w-3 h-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mt-1 flex-shrink-0 animate-pulse shadow-lg" style="animation-delay: 0.5s;"></div>
-                    <span class="group-hover:text-slate-900 transition-colors duration-300">Custom quote based on your needs</span>
+                    <div class="w-3 h-3 bg-gradient-to-r from-slate-600 to-slate-800 rounded-full mt-1 flex-shrink-0 animate-pulse shadow-lg" style="animation-delay: 0.5s;"></div>
+                    <span class="group-hover:text-slate-700 transition-colors duration-300">Custom quote based on your needs</span>
                   </li>
                   <li class="flex items-start space-x-3 group">
-                    <div class="w-3 h-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mt-1 flex-shrink-0 animate-pulse shadow-lg" style="animation-delay: 1s;"></div>
-                    <span class="group-hover:text-slate-900 transition-colors duration-300">Flexible scheduling options</span>
+                    <div class="w-3 h-3 bg-gradient-to-r from-slate-600 to-slate-800 rounded-full mt-1 flex-shrink-0 animate-pulse shadow-lg" style="animation-delay: 1s;"></div>
+                    <span class="group-hover:text-slate-700 transition-colors duration-300">Flexible scheduling options</span>
                   </li>
                   <li class="flex items-start space-x-3 group">
-                    <div class="w-3 h-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mt-1 flex-shrink-0 animate-pulse shadow-lg" style="animation-delay: 1.5s;"></div>
-                    <span class="group-hover:text-slate-900 transition-colors duration-300">Professional consultation</span>
+                    <div class="w-3 h-3 bg-gradient-to-r from-slate-600 to-slate-800 rounded-full mt-1 flex-shrink-0 animate-pulse shadow-lg" style="animation-delay: 1.5s;"></div>
+                    <span class="group-hover:text-slate-700 transition-colors duration-300">Professional consultation</span>
                   </li>
                 </ul>
               </div>

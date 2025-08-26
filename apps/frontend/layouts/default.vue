@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-900 text-white">
+  <div class="min-h-screen bg-white text-slate-900">
     <!-- Header -->
     <Header />
     
@@ -17,6 +17,11 @@
 </template>
 
 <script setup lang="ts">
+// Import components
+import Header from '~/components/Header.vue'
+import Footer from '~/components/Footer.vue'
+import NewsletterModal from '~/components/NewsletterModal.vue'
+
 useHead({
   title: 'Uncle Eruted Photography - Professional Photographer & Videographer',
   meta: [

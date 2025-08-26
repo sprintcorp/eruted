@@ -1,15 +1,15 @@
 <template>
   <div class="about-page">
-    <!-- Hero Section - Asymmetric Layout -->
+    <!-- Hero Section - Enhanced Layout -->
     <section class="hero-section">
       <!-- Photography Equipment Background -->
       <div class="equipment-bg">
-        <div class="equipment-motif motif-1 motif-lens"></div>
-        <div class="equipment-motif motif-2 motif-camera"></div>
-        <div class="equipment-motif motif-3 motif-tripod"></div>
-        <div class="equipment-motif motif-4 motif-lighting"></div>
-        <div class="equipment-motif motif-5 motif-drone"></div>
-        <div class="equipment-motif motif-6 motif-rig"></div>
+        <div class="equipment-motif motif-1"></div>
+        <div class="equipment-motif motif-2"></div>
+        <div class="equipment-motif motif-3"></div>
+        <div class="equipment-motif motif-4"></div>
+        <div class="equipment-motif motif-5"></div>
+        <div class="equipment-motif motif-6"></div>
       </div>
 
       <div class="hero-content">
@@ -27,14 +27,14 @@
             </div>
           </div>
 
-          <!-- Right Column -->
+          <!-- Right Column - Wider Image -->
           <div class="hero-right animate-slide-up">
             <div class="hero-image-container">
-              <div class="photography-frame">
+              <div class="photography-frame-wide">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&crop=face"
-                  alt="Professional Photographer"
-                  class="hero-image"
+                  src="https://res.cloudinary.com/sprintcorp/image/upload/v1756135410/eruted/eruted_uzwmuq.jpg"
+                  alt="Uncle Eruted - Professional Photographer"
+                  class="hero-image-wide"
                 />
                 <div class="frame-overlay">
                   <div class="pro-badge">
@@ -50,17 +50,17 @@
     </section>
 
     <!-- Story Section - Paper Background -->
-    <section class="section story-section bg-paper">
+    <section class="section story-section bg-slate-50">
       <div class="container">
         <div class="story-content">
           <div class="story-text animate-fade-in">
-            <h2 class="section-title">My Story</h2>
-            <p class="story-description">
+            <h2 class="section-title text-slate-900">My Story</h2>
+            <p class="story-description text-slate-800">
               Photography has been my passion since childhood. I started with a simple point-and-shoot camera, 
               capturing everyday moments that others might overlook. Over the years, I've developed a unique 
               perspective that combines technical expertise with artistic vision.
             </p>
-            <p class="story-subtext">
+            <p class="story-subtext text-slate-700">
               Every photograph tells a story, and I believe in capturing not just images, but emotions, 
               connections, and the essence of the moment. Whether it's a wedding, a portrait session, 
               or a corporate event, my goal is to create images that will be treasured for generations.
@@ -68,12 +68,62 @@
           </div>
 
           <div class="story-image animate-slide-up">
-            <div class="photography-frame">
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&crop=face"
-                alt="Uncle Eruted at work"
-                class="story-img"
-              />
+            <div class="svg-animation-container">
+              <!-- Animated Photography SVG -->
+              <svg class="photography-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Camera Body -->
+                <rect class="camera-body" x="150" y="100" width="100" height="80" rx="15" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+                
+                <!-- Camera Lens -->
+                <circle class="camera-lens" cx="200" cy="140" r="25" fill="#0F172A" stroke="#64748B" stroke-width="3"/>
+                <circle class="lens-inner" cx="200" cy="140" r="18" fill="#1E40AF"/>
+                <circle class="lens-aperture" cx="200" cy="140" r="12" fill="#3B82F6"/>
+                
+                <!-- Viewfinder -->
+                <rect class="viewfinder" x="220" y="110" width="15" height="12" rx="3" fill="#F59E0B"/>
+                
+                <!-- Flash -->
+                <rect class="flash" x="130" y="90" width="20" height="15" rx="5" fill="#EF4444"/>
+                
+                <!-- Shutter Button -->
+                <circle class="shutter-btn" cx="200" cy="70" r="8" fill="#374151"/>
+                
+                <!-- Light Rays -->
+                <g class="light-rays">
+                  <line class="ray ray-1" x1="50" y1="50" x2="80" y2="80" stroke="#FBBF24" stroke-width="3" opacity="0.8"/>
+                  <line class="ray ray-2" x1="60" y1="40" x2="90" y2="70" stroke="#F59E0B" stroke-width="2" opacity="0.6"/>
+                  <line class="ray ray-3" x1="70" y1="30" x2="100" y2="60" stroke="#F97316" stroke-width="2" opacity="0.4"/>
+                </g>
+                
+                <!-- Floating Particles -->
+                <circle class="particle particle-1" cx="80" cy="120" r="2" fill="#60A5FA"/>
+                <circle class="particle particle-2" cx="320" cy="80" r="1.5" fill="#34D399"/>
+                <circle class="particle particle-3" cx="90" cy="200" r="1" fill="#A78BFA"/>
+                <circle class="particle particle-4" cx="310" cy="220" r="1.5" fill="#F472B6"/>
+                
+                <!-- Photography Icons -->
+                <g class="photo-icons">
+                  <circle class="icon-bg icon-1" cx="80" cy="60" r="20" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="2"/>
+                  <text class="icon-text" x="80" y="65" text-anchor="middle" fill="#374151" font-size="12">📸</text>
+                  
+                  <circle class="icon-bg icon-2" cx="320" cy="60" r="20" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="2"/>
+                  <text class="icon-text" x="320" y="65" text-anchor="middle" fill="#374151" font-size="12">💡</text>
+                  
+                  <circle class="icon-bg icon-3" cx="80" cy="240" r="20" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="2"/>
+                  <text class="icon-text" x="80" y="245" text-anchor="middle" fill="#374151" font-size="12">🎯</text>
+                  
+                  <circle class="icon-bg icon-4" cx="320" cy="240" r="20" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="2"/>
+                  <text class="icon-text" x="320" y="245" text-anchor="middle" fill="#374151" font-size="12">⚡</text>
+                </g>
+              </svg>
+              
+              <!-- Animation Overlay Text -->
+              <div class="svg-overlay">
+                <div class="svg-badge">
+                  <div class="svg-icon">🎬</div>
+                  <span class="svg-text">Live Animation</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -81,11 +131,11 @@
     </section>
 
     <!-- Values Section - Paper-100 Background -->
-    <section class="section values-section bg-paper-100">
+    <section class="section values-section bg-white">
       <div class="container">
         <div class="section-header animate-fade-in">
-          <h2 class="section-title">My Values</h2>
-          <p class="section-subtitle">The principles that guide my photography and business</p>
+          <h2 class="section-title text-slate-900">My Values</h2>
+          <p class="section-subtitle text-slate-700">The principles that guide my photography and business</p>
         </div>
 
         <div class="values-grid">
@@ -125,7 +175,7 @@
     </section>
 
     <!-- Experience Section - Deep Background -->
-    <section class="section experience-section bg-deep text-paper">
+    <section class="section experience-section bg-slate-900 text-white">
       <div class="container">
         <div class="experience-content">
           <div class="experience-text animate-fade-in">
@@ -180,11 +230,11 @@
     </section>
 
     <!-- Equipment Section - Paper Background -->
-    <section class="section equipment-section bg-paper">
+    <section class="section equipment-section bg-slate-50">
       <div class="container">
         <div class="section-header animate-fade-in">
-          <h2 class="section-title">Professional Equipment</h2>
-          <p class="section-subtitle">State-of-the-art gear for exceptional results</p>
+          <h2 class="section-title text-slate-900">Professional Equipment</h2>
+          <p class="section-subtitle text-slate-700">State-of-the-art gear for exceptional results</p>
         </div>
 
         <div class="equipment-grid">
@@ -224,7 +274,7 @@
     </section>
 
     <!-- CTA Section - Ink Background -->
-    <section class="section cta-section bg-ink text-paper">
+    <section class="section cta-section bg-slate-800 text-white">
       <div class="container">
         <div class="cta-content animate-fade-in">
           <div class="cta-icon">🌟</div>
@@ -240,18 +290,21 @@
         </div>
       </div>
     </section>
+
+    <!-- Mobile Navigation -->
+    <MobileNav />
   </div>
 </template>
 
 <script setup>
-// Add any reactive data or methods here if needed
+import MobileNav from '~/components/MobileNav.vue'
 </script>
 
 <style scoped>
-/* About Page - White-First Design System */
+/* About Page - Fixed Design System */
 .about-page {
-  background: var(--paper);
-  color: var(--ink);
+  background: white;
+  color: #0F172A;
   overflow-x: hidden;
 }
 
@@ -261,16 +314,30 @@
   padding: 0 1.5rem;
 }
 
-/* Hero Section - Asymmetric Layout */
+/* Hero Section - Modern Compact Layout */
 .hero-section {
   position: relative;
-  min-height: 80vh;
-  background: linear-gradient(135deg, var(--paper-50) 0%, var(--paper-100) 50%, var(--deep-50) 100%);
+  min-height: 60vh;
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 50%, #E2E8F0 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 2rem 1.5rem;
+  padding: 4rem 1.5rem 2rem;
+  margin-top: 80px;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(100, 116, 139, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(148, 163, 184, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .equipment-bg {
@@ -284,6 +351,7 @@
   position: absolute;
   border-radius: 50%;
   opacity: 0.1;
+  background: #64748B;
   animation: organicFlow 20s ease-in-out infinite;
 }
 
@@ -345,7 +413,7 @@
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3rem;
   align-items: center;
 }
 
@@ -354,7 +422,7 @@
 }
 
 .hero-text {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-title {
@@ -365,14 +433,14 @@
 }
 
 .title-line {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 900;
-  line-height: 1;
-  color: var(--ink);
+  line-height: 1.1;
+  color: #0F172A;
 }
 
 .title-line.highlight {
-  background: linear-gradient(135deg, var(--ink), var(--deep));
+  background: linear-gradient(135deg, #0F172A, #1E293B);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -380,7 +448,7 @@
 
 .hero-description {
   font-size: 1.25rem;
-  color: var(--ink-600);
+  color: #475569;
   line-height: 1.6;
   max-width: 32rem;
 }
@@ -400,7 +468,22 @@
   max-width: 25rem;
   border-radius: 2rem;
   overflow: hidden;
-  box-shadow: var(--shadow-large);
+  box-shadow: 0 20px 60px rgba(10, 15, 28, 0.15);
+}
+
+.photography-frame-wide {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(10, 15, 28, 0.15);
+  transition: all 0.3s ease;
+}
+
+.photography-frame-wide:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 32px 80px rgba(10, 15, 28, 0.2);
 }
 
 .hero-image {
@@ -408,6 +491,15 @@
   height: auto;
   display: block;
   object-fit: cover;
+}
+
+.hero-image-wide {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  min-height: 500px;
+  max-height: 550px;
 }
 
 .frame-overlay {
@@ -427,17 +519,151 @@
   gap: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ink);
-  box-shadow: var(--shadow-medium);
+  color: #0F172A;
+  box-shadow: 0 8px 32px rgba(10, 15, 28, 0.1);
 }
 
 .badge-icon {
   font-size: 1rem;
 }
 
+/* SVG Animation Container */
+.svg-animation-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(10, 15, 28, 0.15);
+  overflow: hidden;
+}
+
+.photography-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* SVG Animation Elements */
+.camera-body {
+  animation: cameraFloat 3s ease-in-out infinite;
+}
+
+.camera-lens {
+  animation: lensRotate 4s linear infinite;
+}
+
+.lens-inner {
+  animation: lensPulse 2s ease-in-out infinite;
+}
+
+.lens-aperture {
+  animation: apertureBlink 1.5s ease-in-out infinite;
+}
+
+.viewfinder {
+  animation: viewfinderGlow 2s ease-in-out infinite;
+}
+
+.flash {
+  animation: flashBlink 3s ease-in-out infinite;
+}
+
+.shutter-btn {
+  animation: shutterPress 2.5s ease-in-out infinite;
+}
+
+/* Light Rays Animation */
+.ray-1 {
+  animation: rayMove1 4s ease-in-out infinite;
+}
+
+.ray-2 {
+  animation: rayMove2 4s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.ray-3 {
+  animation: rayMove3 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Floating Particles */
+.particle-1 {
+  animation: particleFloat1 6s ease-in-out infinite;
+}
+
+.particle-2 {
+  animation: particleFloat2 8s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.particle-3 {
+  animation: particleFloat3 7s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.particle-4 {
+  animation: particleFloat4 9s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+/* Icon Animations */
+.icon-1 {
+  animation: iconBounce 3s ease-in-out infinite;
+}
+
+.icon-2 {
+  animation: iconBounce 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.icon-3 {
+  animation: iconBounce 3s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.icon-4 {
+  animation: iconBounce 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+/* SVG Overlay */
+.svg-overlay {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.svg-badge {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 8px 32px rgba(10, 15, 28, 0.2);
+}
+
+.svg-icon {
+  font-size: 1rem;
+}
+
+.svg-text {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 /* Section Styles */
 .section {
-  padding: 6rem 0;
+  padding: 4rem 0;
 }
 
 .section-header {
@@ -448,33 +674,39 @@
 .section-title {
   font-size: 3rem;
   font-weight: 800;
-  color: var(--ink);
+  color: #0F172A;
   margin: 0 0 1rem 0;
 }
 
 .section-subtitle {
   font-size: 1.25rem;
-  color: var(--ink-600);
+  color: #475569;
   line-height: 1.6;
   max-width: 32rem;
   margin: 0 auto;
 }
 
-/* Story Section */
+/* Story Section - Modern Compact */
 .story-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3rem;
   align-items: center;
 }
 
 .story-text {
   text-align: left;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  box-shadow: 0 8px 32px rgba(10, 15, 28, 0.08);
 }
 
 .story-description, .story-subtext {
   font-size: 1.125rem;
-  color: var(--ink-600);
+  color: #475569;
   line-height: 1.7;
   margin-bottom: 1.5rem;
 }
@@ -499,19 +731,19 @@
 }
 
 .value-card {
-  background: var(--paper);
-  border: 1px solid var(--ink-200);
+  background: white;
+  border: 1px solid #E2E8F0;
   border-radius: 1.5rem;
   padding: 2.5rem;
   text-align: center;
   transition: all 0.3s ease;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 4px 24px rgba(10, 15, 28, 0.06);
 }
 
 .value-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-medium);
-  border-color: var(--deep-300);
+  box-shadow: 0 8px 32px rgba(10, 15, 28, 0.08);
+  border-color: #CBD5E1;
 }
 
 .value-icon {
@@ -522,12 +754,12 @@
 .value-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--ink);
+  color: #0F172A;
   margin: 0 0 1rem 0;
 }
 
 .value-description {
-  color: var(--ink-600);
+  color: #475569;
   line-height: 1.6;
 }
 
@@ -545,7 +777,7 @@
 
 .experience-description {
   font-size: 1.125rem;
-  color: var(--paper-200);
+  color: #E2E8F0;
   line-height: 1.7;
   margin-bottom: 2rem;
 }
@@ -565,16 +797,16 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 1rem;
   padding: 1.5rem;
-  box-shadow: var(--shadow-medium);
+  box-shadow: 0 8px 32px rgba(10, 15, 28, 0.08);
 }
 
 .expertise-icon {
   font-size: 2rem;
-  color: var(--paper);
+  color: white;
 }
 
 .expertise-text {
-  color: var(--paper-200);
+  color: #E2E8F0;
   font-weight: 600;
   font-size: 1rem;
 }
@@ -597,18 +829,18 @@
   border-radius: 1rem;
   padding: 2rem;
   text-align: center;
-  box-shadow: var(--shadow-medium);
+  box-shadow: 0 8px 32px rgba(10, 15, 28, 0.08);
 }
 
 .stat-value {
   font-size: 2.5rem;
   font-weight: 900;
-  color: var(--paper);
+  color: white;
   margin-bottom: 0.5rem;
 }
 
 .stat-text {
-  color: var(--paper-200);
+  color: #E2E8F0;
   font-size: 0.875rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -623,19 +855,19 @@
 }
 
 .equipment-card {
-  background: var(--paper);
-  border: 1px solid var(--ink-200);
+  background: white;
+  border: 1px solid #E2E8F0;
   border-radius: 1.5rem;
   padding: 2.5rem;
   text-align: center;
   transition: all 0.3s ease;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 4px 24px rgba(10, 15, 28, 0.06);
 }
 
 .equipment-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-medium);
-  border-color: var(--deep-300);
+  box-shadow: 0 8px 32px rgba(10, 15, 28, 0.08);
+  border-color: #CBD5E1;
 }
 
 .equipment-icon {
@@ -646,12 +878,12 @@
 .equipment-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--ink);
+  color: #0F172A;
   margin: 0 0 1rem 0;
 }
 
 .equipment-description {
-  color: var(--ink-600);
+  color: #475569;
   line-height: 1.6;
 }
 
@@ -704,25 +936,140 @@
 }
 
 .btn-primary {
-  background: var(--paper);
-  color: var(--ink);
-  box-shadow: var(--shadow-medium);
+  background: white;
+  color: #0F172A;
+  box-shadow: 0 8px 32px rgba(10, 15, 28, 0.08);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-large);
+  box-shadow: 0 20px 60px rgba(10, 15, 28, 0.15);
 }
 
 .btn-secondary {
   background: rgba(255, 255, 255, 0.1);
-  color: var(--paper);
+  color: white;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
+}
+
+/* Animation keyframes */
+@keyframes organicFlow {
+  0%, 100% { 
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1); 
+  }
+  25% { 
+    transform: translateX(10px) translateY(-5px) rotate(2deg) scale(1.02); 
+  }
+  50% { 
+    transform: translateX(-5px) translateY(10px) rotate(-1deg) scale(0.98); 
+  }
+  75% { 
+    transform: translateX(15px) translateY(5px) rotate(3deg) scale(1.01); 
+  }
+}
+
+/* SVG Animation Keyframes */
+@keyframes cameraFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes lensRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes lensPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes apertureBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes viewfinderGlow {
+  0%, 100% { filter: drop-shadow(0 0 5px #F59E0B); }
+  50% { filter: drop-shadow(0 0 15px #F59E0B); }
+}
+
+@keyframes flashBlink {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes shutterPress {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.9); }
+}
+
+@keyframes rayMove1 {
+  0%, 100% { transform: translateX(0) translateY(0); opacity: 0.8; }
+  50% { transform: translateX(10px) translateY(-10px); opacity: 1; }
+}
+
+@keyframes rayMove2 {
+  0%, 100% { transform: translateX(0) translateY(0); opacity: 0.6; }
+  50% { transform: translateX(8px) translateY(-8px); opacity: 0.9; }
+}
+
+@keyframes rayMove3 {
+  0%, 100% { transform: translateX(0) translateY(0); opacity: 0.4; }
+  50% { transform: translateX(6px) translateY(-6px); opacity: 0.7; }
+}
+
+@keyframes particleFloat1 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-10px) translateX(5px); }
+  50% { transform: translateY(-5px) translateX(10px); }
+  75% { transform: translateY(-15px) translateX(5px); }
+}
+
+@keyframes particleFloat2 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-8px) translateX(-5px); }
+  50% { transform: translateY(-12px) translateX(-10px); }
+  75% { transform: translateY(-6px) translateX(-5px); }
+}
+
+@keyframes particleFloat3 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-6px) translateX(8px); }
+  50% { transform: translateY(-10px) translateX(15px); }
+  75% { transform: translateY(-4px) translateX(8px); }
+}
+
+@keyframes particleFloat4 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-12px) translateX(-8px); }
+  50% { transform: translateY(-8px) translateX(-15px); }
+  75% { transform: translateY(-14px) translateX(-8px); }
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 /* Responsive Design */

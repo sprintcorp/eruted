@@ -267,35 +267,35 @@
               </div>
 
               <!-- Session Types -->
-              <div class="modern-card p-6">
-                <h3 class="text-xl font-bold text-white mb-4">Session Types</h3>
+              <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg">
+                <h3 class="text-xl font-bold text-slate-900 mb-4">Session Types</h3>
                 <div class="space-y-3">
                   <div v-for="session in sessionTypes" :key="session.type" class="flex items-center justify-between">
-                    <span class="text-white/80 text-sm">{{ session.name }}</span>
-                    <span class="text-accent-400 text-sm font-medium">{{ session.duration }}</span>
+                    <span class="text-slate-900 text-sm">{{ session.name }}</span>
+                    <span class="text-slate-700 text-sm font-medium">{{ session.duration }}</span>
                   </div>
                 </div>
               </div>
 
               <!-- Contact Info -->
-              <div class="modern-card p-6">
-                <h3 class="text-xl font-bold text-white mb-4">Get in Touch</h3>
+              <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg">
+                <h3 class="text-xl font-bold text-slate-900 mb-4">Get in Touch</h3>
                 <div class="space-y-3 text-sm">
                   <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 bg-accent-500/20 rounded-full flex items-center justify-center">
-                      <svg class="w-4 h-4 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center">
+                      <svg class="w-4 h-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                       </svg>
                     </div>
-                    <span class="text-white/70">Okuneyetewo@gmail.com</span>
+                    <span class="text-slate-900">Okuneyetewo@gmail.com</span>
                   </div>
                   <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 bg-accent-500/20 rounded-full flex items-center justify-center">
-                      <svg class="w-4 h-4 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center">
+                      <svg class="w-4 h-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                       </svg>
                     </div>
-                    <span class="text-white/70">+234 807 095 3724</span>
+                    <span class="text-slate-900">+234 807 095 3724</span>
                   </div>
                 </div>
               </div>

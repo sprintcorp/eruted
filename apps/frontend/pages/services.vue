@@ -1,13 +1,49 @@
 <template>
   <div class="services-page">
     <!-- Services Hero Section -->
-    <section class="services-hero bg-gradient-to-b from-white via-white-50 to-white-100 py-20">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section class="services-hero bg-gradient-to-b from-white via-white-50 to-white-100 py-20 relative overflow-hidden">
+      <!-- Background SVG Gears -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="gear-container">
+          <!-- Large Gear -->
+          <svg class="gear gear-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="8,8"/>
+            <circle cx="50" cy="50" r="35" fill="none" stroke="#F1F5F9" stroke-width="1.5"/>
+            <circle cx="50" cy="50" r="25" fill="none" stroke="#F8FAFC" stroke-width="1"/>
+            <path d="M50 5 L50 15 M50 85 L50 95 M5 50 L15 50 M85 50 L95 50" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          
+          <!-- Medium Gear -->
+          <svg class="gear gear-2" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="35" fill="none" stroke="#F1F5F9" stroke-width="2" stroke-dasharray="6,6"/>
+            <circle cx="40" cy="40" r="25" fill="none" stroke="#F8FAFC" stroke-width="1.5"/>
+            <path d="M40 5 L40 12 M40 68 L40 75 M5 40 L12 40 M68 40 L75 40" stroke="#E2E8F0" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          
+          <!-- Small Gear -->
+          <svg class="gear gear-3" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="25" fill="none" stroke="#F8FAFC" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <circle cx="30" cy="30" r="15" fill="none" stroke="#F1F5F9" stroke-width="1"/>
+            <path d="M30 5 L30 10 M30 50 L30 55 M5 30 L10 30 M50 30 L55 30" stroke="#E2E8F0" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+          
+          <!-- Camera Lens Gear -->
+          <svg class="gear gear-4" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="35" cy="35" r="30" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+            <circle cx="35" cy="35" r="20" fill="none" stroke="#F1F5F9" stroke-width="1.5"/>
+            <circle cx="35" cy="35" r="10" fill="none" stroke="#F8FAFC" stroke-width="1"/>
+            <path d="M35 5 L35 12 M35 58 L35 65 M5 35 L12 35 M58 35 L65 35" stroke="#CBD5E1" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="35" cy="35" r="5" fill="#F1F5F9"/>
+          </svg>
+        </div>
+      </div>
+      
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div class="animate-fade-in">
-          <h1 class="text-5xl md:text-6xl font-bold text-primary-1000 mb-6">
+          <h1 class="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
             Our Photography Services
           </h1>
-          <p class="text-xl md:text-2xl text-primary-700 max-w-3xl mx-auto leading-relaxed">
+          <p class="text-xl md:text-2xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
             Professional photography and videography services tailored to capture your most precious moments with artistic vision and technical excellence
           </p>
         </div>
@@ -15,8 +51,29 @@
     </section>
 
     <!-- Services Grid -->
-    <section class="services-grid-section bg-white py-20">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="services-grid-section bg-white py-20 relative overflow-hidden">
+      <!-- Background SVG Gears -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="gear-container-secondary">
+          <!-- Technical Gear -->
+          <svg class="gear gear-5" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="45" cy="45" r="40" fill="none" stroke="#F8FAFC" stroke-width="1.5" stroke-dasharray="10,10"/>
+            <circle cx="45" cy="45" r="30" fill="none" stroke="#F1F5F9" stroke-width="1"/>
+            <path d="M45 5 L45 15 M45 75 L45 85 M5 45 L15 45 M75 45 L85 45" stroke="#E2E8F0" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="45" cy="45" r="8" fill="#F1F5F9"/>
+          </svg>
+          
+          <!-- Photography Gear -->
+          <svg class="gear gear-6" viewBox="0 0 75 75" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="37.5" cy="37.5" r="32" fill="none" stroke="#F8FAFC" stroke-width="1.5"/>
+            <circle cx="37.5" cy="37.5" r="22" fill="none" stroke="#F1F5F9" stroke-width="1"/>
+            <path d="M37.5 5 L37.5 12 M37.5 63 L37.5 70 M5 37.5 L12 37.5 M63 37.5 L70 37.5" stroke="#E2E8F0" stroke-width="1" stroke-linecap="round"/>
+            <circle cx="37.5" cy="37.5" r="12" fill="#F1F5F9" opacity="0.5"/>
+          </svg>
+        </div>
+      </div>
+      
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="services-grid">
           <div 
             v-for="(service, index) in services" 
@@ -39,7 +96,7 @@
                 <h4 class="features-title">What's Included:</h4>
                 <ul class="features-list">
                   <li v-for="feature in service.features" :key="feature" class="feature-item">
-                    <Check class="w-4 h-4 text-primary-600 mr-3" />
+                    <Check class="w-4 h-4 text-slate-600 mr-3" />
                     {{ feature }}
                   </li>
                 </ul>
@@ -71,13 +128,33 @@
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="why-choose-section bg-gradient-to-b from-white-50 to-white-100 py-20">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="why-choose-section bg-gradient-to-b from-white-50 to-white-100 py-20 relative overflow-hidden">
+      <!-- Background SVG Gears -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="gear-container-why">
+          <!-- Why Choose Gear 1 -->
+          <svg class="gear gear-9" viewBox="0 0 95 95" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="47.5" cy="47.5" r="42" fill="none" stroke="#F8FAFC" stroke-width="1.5" stroke-dasharray="15,15"/>
+            <circle cx="47.5" cy="47.5" r="32" fill="none" stroke="#F1F5F9" stroke-width="1"/>
+            <path d="M47.5 5 L47.5 18 M47.5 77 L47.5 90 M5 47.5 L18 47.5 M77 47.5 L90 47.5" stroke="#E2E8F0" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="47.5" cy="47.5" r="10" fill="#F1F5F9" opacity="0.4"/>
+          </svg>
+          
+          <!-- Why Choose Gear 2 -->
+          <svg class="gear gear-10" viewBox="0 0 65 65" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32.5" cy="32.5" r="28" fill="none" stroke="#F1F5F9" stroke-width="1.5"/>
+            <circle cx="32.5" cy="32.5" r="18" fill="none" stroke="#F8FAFC" stroke-width="1"/>
+            <path d="M32.5 4 L32.5 12 M32.5 53 L32.5 61 M4 32.5 L12 32.5 M53 32.5 L61 32.5" stroke="#E2E8F0" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16 animate-fade-in">
-          <h2 class="text-4xl md:text-5xl font-bold text-primary-1000 mb-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Why Choose Uncle Eruted?
           </h2>
-          <p class="text-lg md:text-xl text-primary-700 max-w-3xl mx-auto leading-relaxed">
+          <p class="text-lg md:text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
             Experience the difference that professional expertise, artistic vision, and cutting-edge technology make in capturing your special moments.
           </p>
         </div>
@@ -90,7 +167,7 @@
             :style="{ animationDelay: `${index * 0.1}s` }"
           >
             <div class="feature-icon-wrapper">
-              <component :is="feature.icon" class="w-8 h-8 text-primary-600" />
+              <component :is="feature.icon" class="w-8 h-8 text-slate-600" />
             </div>
             <h3 class="feature-title">{{ feature.title }}</h3>
             <p class="feature-description">{{ feature.description }}</p>
@@ -100,13 +177,33 @@
     </section>
 
     <!-- Process Section -->
-    <section class="process-section bg-white py-20">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="process-section bg-white py-20 relative overflow-hidden">
+      <!-- Background SVG Gears -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="gear-container-process">
+          <!-- Process Gear 1 -->
+          <svg class="gear gear-7" viewBox="0 0 85 85" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="42.5" cy="42.5" r="37" fill="none" stroke="#F8FAFC" stroke-width="1.5" stroke-dasharray="12,12"/>
+            <circle cx="42.5" cy="42.5" r="27" fill="none" stroke="#F1F5F9" stroke-width="1"/>
+            <path d="M42.5 5 L42.5 15 M42.5 70 L42.5 80 M5 42.5 L15 42.5 M70 42.5 L80 42.5" stroke="#E2E8F0" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          
+          <!-- Process Gear 2 -->
+          <svg class="gear gear-8" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="35" cy="35" r="30" fill="none" stroke="#F1F5F9" stroke-width="1.5"/>
+            <circle cx="35" cy="35" r="20" fill="none" stroke="#F8FAFC" stroke-width="1"/>
+            <path d="M35 5 L35 12 M35 58 L35 65 M5 35 L12 35 M58 35 L65 35" stroke="#E2E8F0" stroke-width="1" stroke-linecap="round"/>
+            <circle cx="35" cy="35" r="6" fill="#F1F5F9" opacity="0.3"/>
+          </svg>
+        </div>
+      </div>
+      
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16 animate-fade-in">
-          <h2 class="text-4xl md:text-5xl font-bold text-primary-1000 mb-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Our Photography Process
           </h2>
-          <p class="text-lg md:text-xl text-primary-700 max-w-3xl mx-auto leading-relaxed">
+          <p class="text-lg md:text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
             From initial consultation to final delivery, we ensure every step of your photography experience is seamless and enjoyable.
           </p>
         </div>
@@ -129,21 +226,21 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section bg-gradient-to-br from-primary-1000 via-primary-900 to-primary-800 text-white py-20">
+    <section class="cta-section bg-slate-900 py-20">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="animate-fade-in">
-          <h2 class="text-4xl md:text-5xl font-bold mb-8">
+          <h2 class="text-4xl md:text-5xl font-bold mb-8 text-white">
             Ready to Capture Your Story?
           </h2>
-          <p class="text-lg md:text-xl text-primary-100 mb-10 max-w-3xl mx-auto leading-relaxed">
+          <p class="text-lg md:text-xl font-semibold text-slate-200 mb-10 max-w-3xl mx-auto leading-relaxed">
             Let's discuss your photography needs and create a custom package that perfectly captures your vision.
           </p>
           <div class="flex flex-col sm:flex-row gap-6 justify-center">
-            <button class="btn-white-large">
+            <button class="bg-white text-slate-900 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-slate-50 hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center border-2 border-slate-300">
               <Calendar class="w-5 h-5 mr-3" />
               Book Your Session
             </button>
-            <button class="btn-outline-white-large">
+            <button class="bg-slate-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-slate-600 hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center">
               <Mail class="w-5 h-5 mr-3" />
               Get a Quote
             </button>
@@ -398,7 +495,7 @@ useHead({
 }
 
 .service-subtitle {
-  @apply text-slate-600 font-medium;
+  @apply text-slate-700 font-medium;
 }
 
 .service-content {
@@ -406,7 +503,7 @@ useHead({
 }
 
 .service-description {
-  @apply text-slate-700 mb-6 leading-relaxed;
+  @apply text-slate-800 mb-6 leading-relaxed;
 }
 
 .service-features {
@@ -422,7 +519,7 @@ useHead({
 }
 
 .feature-item {
-  @apply flex items-center text-slate-700;
+  @apply flex items-center text-slate-800;
 }
 
 .service-pricing {
@@ -446,7 +543,7 @@ useHead({
 }
 
 .price-note {
-  @apply text-sm text-slate-500;
+  @apply text-sm text-slate-600;
 }
 
 .service-actions {
@@ -479,7 +576,7 @@ useHead({
 }
 
 .feature-description {
-  @apply text-slate-700 leading-relaxed;
+  @apply text-slate-800 leading-relaxed;
 }
 
 /* Process timeline */
@@ -504,16 +601,125 @@ useHead({
 }
 
 .step-description {
-  @apply text-slate-700 leading-relaxed;
+  @apply text-slate-800 leading-relaxed;
 }
 
 /* Button styles */
 .btn-white-large {
-  @apply bg-white text-slate-900 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-slate-50 hover:scale-105 shadow-md hover:shadow-lg flex items-center justify-center;
+  @apply bg-white text-slate-900 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-slate-50 hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center border-2 border-slate-300;
 }
 
-.btn-outline-white-large {
-  @apply border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white hover:text-slate-900 flex items-center justify-center;
+.btn-dark-blue {
+  @apply bg-slate-800 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-slate-700 hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl;
+}
+
+
+
+/* SVG Gear Animations and Positioning */
+.gear-container {
+  @apply absolute inset-0;
+}
+
+.gear-container-secondary {
+  @apply absolute inset-0;
+}
+
+.gear-container-process {
+  @apply absolute inset-0;
+}
+
+.gear-container-why {
+  @apply absolute inset-0;
+}
+
+.gear {
+  @apply absolute opacity-20;
+  animation: gearFloat 20s ease-in-out infinite;
+}
+
+.gear-1 {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 25s;
+}
+
+.gear-2 {
+  top: 20%;
+  right: 15%;
+  animation-delay: -5s;
+  animation-duration: 30s;
+}
+
+.gear-3 {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: -10s;
+  animation-duration: 22s;
+}
+
+.gear-4 {
+  bottom: 20%;
+  right: 25%;
+  animation-delay: -15s;
+  animation-duration: 28s;
+}
+
+.gear-5 {
+  top: 15%;
+  left: 5%;
+  animation-delay: -3s;
+  animation-duration: 26s;
+}
+
+.gear-6 {
+  bottom: 25%;
+  right: 10%;
+  animation-delay: -8s;
+  animation-duration: 24s;
+}
+
+.gear-7 {
+  top: 25%;
+  left: 15%;
+  animation-delay: -12s;
+  animation-duration: 27s;
+}
+
+.gear-8 {
+  bottom: 15%;
+  right: 20%;
+  animation-delay: -6s;
+  animation-duration: 23s;
+}
+
+.gear-9 {
+  top: 30%;
+  right: 5%;
+  animation-delay: -9s;
+  animation-duration: 29s;
+}
+
+.gear-10 {
+  bottom: 35%;
+  left: 10%;
+  animation-delay: -14s;
+  animation-duration: 25s;
+}
+
+@keyframes gearFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(270deg);
+  }
 }
 
 /* Responsive adjustments */
@@ -536,6 +742,11 @@ useHead({
   
   .btn-white-large, .btn-outline-white-large {
     @apply px-6 py-3 text-sm;
+  }
+  
+  /* Hide gears on mobile for better performance */
+  .gear {
+    @apply hidden;
   }
 }
 </style>

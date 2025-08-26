@@ -1,185 +1,241 @@
 <template>
   <div class="about-page">
-    <!-- Hero Section -->
-    <section class="hero-section relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-primary-1000 via-primary-950 to-secondary-950"></div>
-      
-      <!-- Floating Photography Elements -->
-      <div class="floating-elements">
-        <div class="floating-element camera-icon" style="top: 20%; left: 10%; animation-delay: 0s;">
-          📷
-        </div>
-        <div class="floating-element lens-icon" style="top: 30%; right: 15%; animation-delay: 1s;">
-          🔍
-        </div>
-        <div class="floating-element film-icon" style="top: 70%; left: 20%; animation-delay: 2s;">
-          🎞️
-        </div>
-        <div class="floating-element tripod-icon" style="top: 60%; right: 25%; animation-delay: 3s;">
-          🦵
-        </div>
+    <!-- Hero Section - Asymmetric Layout -->
+    <section class="hero-section">
+      <!-- Photography Equipment Background -->
+      <div class="equipment-bg">
+        <div class="equipment-motif motif-1 motif-lens"></div>
+        <div class="equipment-motif motif-2 motif-camera"></div>
+        <div class="equipment-motif motif-3 motif-tripod"></div>
+        <div class="equipment-motif motif-4 motif-lighting"></div>
+        <div class="equipment-motif motif-5 motif-drone"></div>
+        <div class="equipment-motif motif-6 motif-rig"></div>
       </div>
 
-      <div class="container mx-auto px-4 py-32 relative z-10">
-        <div class="text-center max-w-4xl mx-auto">
-          <h1 class="text-5xl lg:text-7xl font-bold text-white mb-8 animate-fade-in">
-            About <span class="text-gradient">Uncle Eruted</span>
-          </h1>
-          <p class="text-xl lg:text-2xl text-white/80 leading-relaxed animate-fade-in" style="animation-delay: 0.2s;">
-            A passionate photographer with over a decade of experience capturing life's most precious moments
-          </p>
+      <div class="hero-content">
+        <div class="hero-grid">
+          <!-- Left Column -->
+          <div class="hero-left animate-fade-in">
+            <div class="hero-text">
+              <h1 class="hero-title">
+                <span class="title-line">About</span>
+                <span class="title-line highlight">Uncle Eruted</span>
+              </h1>
+              <p class="hero-description">
+                Professional photographer with over 5 years of experience capturing life's most precious moments.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="hero-right animate-slide-up">
+            <div class="hero-image-container">
+              <div class="photography-frame">
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&crop=face"
+                  alt="Professional Photographer"
+                  class="hero-image"
+                />
+                <div class="frame-overlay">
+                  <div class="pro-badge">
+                    <div class="badge-icon">⭐</div>
+                    <span class="badge-text">PRO</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Story Section -->
-    <section class="py-20 bg-primary-900">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div class="animate-fade-in" style="animation-delay: 0.3s;">
-            <h2 class="text-4xl lg:text-5xl font-bold text-white mb-8">
-              The <span class="text-gradient">Story</span> Behind the Lens
-            </h2>
-            <div class="space-y-6 text-lg text-white/80 leading-relaxed">
-              <p>
-                My journey in photography began with a simple curiosity about capturing the world around me. 
-                What started as a hobby quickly evolved into a passion that would shape my entire life.
-              </p>
-              <p>
-                Through the lens, I discovered the extraordinary beauty in ordinary moments - the way light 
-                dances across a bride's face, the genuine laughter shared between families, the quiet 
-                confidence of a portrait subject.
-              </p>
-              <p>
-                Every photograph tells a story, and I'm honored to be the storyteller behind the camera, 
-                preserving memories that will be cherished for generations to come.
-              </p>
-            </div>
+    <!-- Story Section - Paper Background -->
+    <section class="section story-section bg-paper">
+      <div class="container">
+        <div class="story-content">
+          <div class="story-text animate-fade-in">
+            <h2 class="section-title">My Story</h2>
+            <p class="story-description">
+              Photography has been my passion since childhood. I started with a simple point-and-shoot camera, 
+              capturing everyday moments that others might overlook. Over the years, I've developed a unique 
+              perspective that combines technical expertise with artistic vision.
+            </p>
+            <p class="story-subtext">
+              Every photograph tells a story, and I believe in capturing not just images, but emotions, 
+              connections, and the essence of the moment. Whether it's a wedding, a portrait session, 
+              or a corporate event, my goal is to create images that will be treasured for generations.
+            </p>
           </div>
-          
-          <div class="relative animate-fade-in" style="animation-delay: 0.6s;">
-            <div class="relative z-10">
+
+          <div class="story-image animate-slide-up">
+            <div class="photography-frame">
               <img 
-                src="https://res.cloudinary.com/sprintcorp/image/upload/v1756135410/eruted/eruted_uzwmuq.jpg"
-                alt="Uncle Eruted - Professional Photographer"
-                class="w-full h-96 object-cover rounded-2xl shadow-2xl"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&crop=face"
+                alt="Uncle Eruted at work"
+                class="story-img"
               />
             </div>
-            <div class="absolute -bottom-6 -right-6 w-full h-full bg-gradient-to-br from-primary-600 to-accent-600 rounded-2xl -z-10"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Values Section -->
-    <section class="py-20 bg-primary-800">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16 animate-fade-in">
-          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-            My <span class="text-gradient">Values</span>
-          </h2>
-          <p class="text-xl text-white/70 max-w-3xl mx-auto">
-            The principles that guide every photograph I take and every client I serve
-          </p>
+    <!-- Values Section - Paper-100 Background -->
+    <section class="section values-section bg-paper-100">
+      <div class="container">
+        <div class="section-header animate-fade-in">
+          <h2 class="section-title">My Values</h2>
+          <p class="section-subtitle">The principles that guide my photography and business</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div 
-            v-for="(value, index) in values" 
-            :key="value.title"
-            class="modern-card p-8 text-center animate-fade-in"
-            :style="{ animationDelay: `${index * 0.2}s` }"
-          >
-            <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mx-auto mb-6">
-              <span class="text-2xl">{{ value.icon }}</span>
+        <div class="values-grid">
+          <div class="value-card animate-slide-up" style="animation-delay: 0.1s;">
+            <div class="value-icon">🎯</div>
+            <h3 class="value-title">Excellence</h3>
+            <p class="value-description">
+              Every shot is crafted with attention to detail, ensuring the highest quality in every image.
+            </p>
+          </div>
+
+          <div class="value-card animate-slide-up" style="animation-delay: 0.2s;">
+            <div class="value-icon">💝</div>
+            <h3 class="value-title">Authenticity</h3>
+            <p class="value-description">
+              I capture real moments and genuine emotions, creating authentic memories that reflect the truth.
+            </p>
+          </div>
+
+          <div class="value-card animate-slide-up" style="animation-delay: 0.3s;">
+            <div class="value-icon">🚀</div>
+            <h3 class="value-title">Innovation</h3>
+            <p class="value-description">
+              Constantly exploring new techniques and creative approaches to deliver unique perspectives.
+            </p>
+          </div>
+
+          <div class="value-card animate-slide-up" style="animation-delay: 0.4s;">
+            <div class="value-icon">🤝</div>
+            <h3 class="value-title">Partnership</h3>
+            <p class="value-description">
+              Working closely with clients to understand their vision and bring it to life through photography.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section - Deep Background -->
+    <section class="section experience-section bg-deep text-paper">
+      <div class="container">
+        <div class="experience-content">
+          <div class="experience-text animate-fade-in">
+            <h2 class="section-title">Experience & Expertise</h2>
+            <p class="experience-description">
+              With over 5 years in professional photography, I've had the privilege of working with 
+              diverse clients and capturing countless special moments across various photography genres.
+            </p>
+            
+            <div class="expertise-list">
+              <div class="expertise-item">
+                <div class="expertise-icon">📸</div>
+                <div class="expertise-text">Portrait Photography</div>
+              </div>
+              <div class="expertise-item">
+                <div class="expertise-icon">💒</div>
+                <div class="expertise-text">Wedding Photography</div>
+              </div>
+              <div class="expertise-item">
+                <div class="expertise-icon">🎥</div>
+                <div class="expertise-text">Event Videography</div>
+              </div>
+              <div class="expertise-item">
+                <div class="expertise-icon">🏢</div>
+                <div class="expertise-text">Corporate Events</div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold text-white mb-4">{{ value.title }}</h3>
-            <p class="text-white/80 leading-relaxed">{{ value.description }}</p>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section class="py-20 bg-primary-900">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16 animate-fade-in">
-          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Years of <span class="text-gradient">Experience</span>
-          </h2>
-          <p class="text-xl text-white/70 max-w-3xl mx-auto">
-            From intimate portraits to grand celebrations, I've captured countless moments across diverse settings
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div 
-            v-for="(stat, index) in stats" 
-            :key="stat.label"
-            class="text-center animate-fade-in"
-            :style="{ animationDelay: `${index * 0.1}s` }"
-          >
-            <div class="text-5xl lg:text-6xl font-bold text-gradient-primary mb-4">{{ stat.value }}</div>
-            <div class="text-lg text-white/80">{{ stat.label }}</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Equipment Section -->
-    <section class="py-20 bg-primary-800">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16 animate-fade-in">
-          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Professional <span class="text-gradient">Equipment</span>
-          </h2>
-          <p class="text-xl text-white/70 max-w-3xl mx-auto">
-            Using state-of-the-art gear to ensure every image meets the highest standards of quality
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div 
-            v-for="(gear, index) in equipment" 
-            :key="gear.name"
-            class="modern-card p-6 text-center animate-fade-in"
-            :style="{ animationDelay: `${index * 0.2}s` }"
-          >
-            <div class="w-20 h-20 bg-gradient-to-br from-secondary-700 to-secondary-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl">{{ gear.icon }}</span>
+          <div class="experience-stats animate-slide-up">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-value">500+</div>
+                <div class="stat-text">Happy Clients</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">1000+</div>
+                <div class="stat-text">Photos Captured</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">50+</div>
+                <div class="stat-text">Events Covered</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">5+</div>
+                <div class="stat-text">Years Experience</div>
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">{{ gear.name }}</h3>
-            <p class="text-white/70 text-sm">{{ gear.description }}</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-primary-800 to-primary-900">
-      <div class="container mx-auto px-4 text-center">
-        <div class="max-w-4xl mx-auto space-y-8 animate-fade-in">
-          <h2 class="text-4xl lg:text-5xl font-bold text-white">
-            Ready to <span class="text-gradient">Work Together</span>?
-          </h2>
-          <p class="text-xl text-white/80 leading-relaxed">
-            Let's create something beautiful together. Whether you're planning a wedding, 
-            need professional portraits, or want to capture a special event, I'm here to help.
+    <!-- Equipment Section - Paper Background -->
+    <section class="section equipment-section bg-paper">
+      <div class="container">
+        <div class="section-header animate-fade-in">
+          <h2 class="section-title">Professional Equipment</h2>
+          <p class="section-subtitle">State-of-the-art gear for exceptional results</p>
+        </div>
+
+        <div class="equipment-grid">
+          <div class="equipment-card animate-scale-in" style="animation-delay: 0.1s;">
+            <div class="equipment-icon">📷</div>
+            <h3 class="equipment-title">Cameras</h3>
+            <p class="equipment-description">
+              Professional DSLR and mirrorless cameras with high-resolution sensors for stunning image quality.
+            </p>
+          </div>
+
+          <div class="equipment-card animate-scale-in" style="animation-delay: 0.2s;">
+            <div class="equipment-icon">🔍</div>
+            <h3 class="equipment-title">Lenses</h3>
+            <p class="equipment-description">
+              Premium prime and zoom lenses covering wide-angle to telephoto for versatile shooting.
+            </p>
+          </div>
+
+          <div class="equipment-card animate-scale-in" style="animation-delay: 0.3s;">
+            <div class="equipment-icon">💡</div>
+            <h3 class="equipment-title">Lighting</h3>
+            <p class="equipment-description">
+              Professional lighting equipment including strobes, continuous lights, and modifiers.
+            </p>
+          </div>
+
+          <div class="equipment-card animate-scale-in" style="animation-delay: 0.4s;">
+            <div class="equipment-icon">🎥</div>
+            <h3 class="equipment-title">Video Gear</h3>
+            <p class="equipment-description">
+              High-quality video cameras, stabilizers, and audio equipment for professional videography.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section - Ink Background -->
+    <section class="section cta-section bg-ink text-paper">
+      <div class="container">
+        <div class="cta-content animate-fade-in">
+          <div class="cta-icon">🌟</div>
+          <h2 class="cta-title">Ready to Work Together?</h2>
+          <p class="cta-description">
+            Let's discuss your photography needs and create something beautiful together. 
+            I'm here to bring your vision to life.
           </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <NuxtLink to="/booking" class="btn-primary text-lg px-8 py-4">
-              Book Your Session
-              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-              </svg>
-            </NuxtLink>
-            <NuxtLink to="/contact" class="btn-secondary text-lg px-8 py-4">
-              Get In Touch
-              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-              </svg>
-            </NuxtLink>
+          <div class="cta-buttons">
+            <button class="btn-primary">Book Consultation</button>
+            <button class="btn-secondary">View Portfolio</button>
           </div>
         </div>
       </div>
@@ -187,143 +243,563 @@
   </div>
 </template>
 
-<script setup lang="ts">
-// Values data
-const values = [
-  {
-    icon: '💝',
-    title: 'Authenticity',
-    description: 'Every photograph captures genuine emotions and real moments, never staged or artificial.'
-  },
-  {
-    icon: '✨',
-    title: 'Excellence',
-    description: 'Committed to delivering the highest quality images that exceed expectations.'
-  },
-  {
-    icon: '🤝',
-    title: 'Connection',
-    description: 'Building lasting relationships with clients through trust, communication, and understanding.'
-  },
-  {
-    icon: '🎨',
-    title: 'Creativity',
-    description: 'Bringing artistic vision and innovative techniques to every photography session.'
-  },
-  {
-    icon: '⏰',
-    title: 'Reliability',
-    description: 'Always punctual, professional, and prepared for every assignment.'
-  },
-  {
-    icon: '💎',
-    title: 'Quality',
-    description: 'Using premium equipment and techniques to create images that last a lifetime.'
-  }
-]
-
-// Stats data
-const stats = [
-  { value: '10+', label: 'Years Experience' },
-  { value: '500+', label: 'Happy Clients' },
-  { value: '1000+', label: 'Events Captured' },
-  { value: '50K+', label: 'Photos Delivered' }
-]
-
-// Equipment data
-const equipment = [
-  {
-    icon: '📷',
-    name: 'Professional Cameras',
-    description: 'Latest Canon and Sony full-frame cameras for exceptional image quality'
-  },
-  {
-    icon: '🔍',
-    name: 'Premium Lenses',
-    description: 'High-quality prime and zoom lenses for versatility and sharpness'
-  },
-  {
-    icon: '💡',
-    name: 'Lighting Equipment',
-    description: 'Professional lighting setups for perfect illumination in any condition'
-  },
-  {
-    icon: '🦵',
-    name: 'Stabilization',
-    description: 'Tripods, gimbals, and stabilizers for crystal-clear images'
-  },
-  {
-    icon: '💻',
-    name: 'Editing Suite',
-    description: 'Advanced post-processing tools for perfect final images'
-  },
-  {
-    icon: '📱',
-    name: 'Backup Systems',
-    description: 'Multiple backup solutions to ensure your memories are safe'
-  }
-]
+<script setup>
+// Add any reactive data or methods here if needed
 </script>
 
 <style scoped>
+/* About Page - White-First Design System */
 .about-page {
-  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Hero Section - Asymmetric Layout */
 .hero-section {
+  position: relative;
   min-height: 80vh;
+  background: linear-gradient(135deg, var(--paper-50) 0%, var(--paper-100) 50%, var(--deep-50) 100%);
   display: flex;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem 1.5rem;
 }
 
-.floating-elements {
+.equipment-bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
-.floating-element {
+.equipment-motif {
   position: absolute;
-  font-size: 3rem;
+  border-radius: 50%;
   opacity: 0.1;
-  animation: float 6s ease-in-out infinite;
+  animation: organicFlow 20s ease-in-out infinite;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+.motif-1 {
+  width: 300px;
+  height: 300px;
+  top: 5%;
+  left: -150px;
+  animation-delay: 0s;
 }
 
-.text-gradient {
-  @apply bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent;
+.motif-2 {
+  width: 200px;
+  height: 200px;
+  top: 20%;
+  right: -100px;
+  animation-delay: 5s;
 }
 
-.text-gradient-primary {
-  @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
+.motif-3 {
+  width: 150px;
+  height: 150px;
+  bottom: 15%;
+  left: 5%;
+  animation-delay: 10s;
 }
 
-.modern-card {
-  @apply bg-secondary-900/80 backdrop-blur-xl rounded-2xl border border-secondary-800/50 hover:border-primary-500/50 hover:shadow-2xl hover:shadow-primary-500/20 transition-all duration-300 transform hover:-translate-y-2;
+.motif-4 {
+  width: 180px;
+  height: 180px;
+  bottom: 25%;
+  right: 10%;
+  animation-delay: 15s;
+}
+
+.motif-5 {
+  width: 120px;
+  height: 120px;
+  top: 60%;
+  left: 15%;
+  animation-delay: 8s;
+}
+
+.motif-6 {
+  width: 100px;
+  height: 100px;
+  top: 40%;
+  right: 20%;
+  animation-delay: 12s;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-left {
+  text-align: left;
+}
+
+.hero-text {
+  margin-bottom: 2rem;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.title-line {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.title-line.highlight {
+  background: linear-gradient(135deg, var(--ink), var(--deep));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  color: var(--ink-600);
+  line-height: 1.6;
+  max-width: 32rem;
+}
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image-container {
+  position: relative;
+}
+
+.photography-frame {
+  position: relative;
+  width: 100%;
+  max-width: 25rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-large);
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.frame-overlay {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.pro-badge {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(16, 36, 61, 0.3);
+  border-radius: 2rem;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+  box-shadow: var(--shadow-medium);
+}
+
+.badge-icon {
+  font-size: 1rem;
+}
+
+/* Section Styles */
+.section {
+  padding: 6rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 1rem 0;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--ink-600);
+  line-height: 1.6;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+/* Story Section */
+.story-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.story-text {
+  text-align: left;
+}
+
+.story-description, .story-subtext {
+  font-size: 1.125rem;
+  color: var(--ink-600);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.story-image {
+  display: flex;
+  justify-content: center;
+}
+
+.story-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Values Section */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.value-card {
+  background: var(--paper);
+  border: 1px solid var(--ink-200);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--deep-300);
+}
+
+.value-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.value-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 1rem 0;
+}
+
+.value-description {
+  color: var(--ink-600);
+  line-height: 1.6;
+}
+
+/* Experience Section */
+.experience-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.experience-text {
+  text-align: left;
+}
+
+.experience-description {
+  font-size: 1.125rem;
+  color: var(--paper-200);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.expertise-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.expertise-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-medium);
+}
+
+.expertise-icon {
+  font-size: 2rem;
+  color: var(--paper);
+}
+
+.expertise-text {
+  color: var(--paper-200);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.experience-stats {
+  display: flex;
+  justify-content: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-medium);
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--paper);
+  margin-bottom: 0.5rem;
+}
+
+.stat-text {
+  color: var(--paper-200);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Equipment Section */
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.equipment-card {
+  background: var(--paper);
+  border: 1px solid var(--ink-200);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.equipment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--deep-300);
+}
+
+.equipment-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.equipment-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 1rem 0;
+}
+
+.equipment-description {
+  color: var(--ink-600);
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+}
+
+.cta-description {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 3.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
-  @apply inline-flex items-center bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-large);
 }
 
 .btn-secondary {
-  @apply inline-flex items-center bg-transparent border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--paper);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-  opacity: 0;
-  transform: translateY(30px);
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .hero-left {
+    text-align: center;
+  }
+  
+  .story-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .experience-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .expertise-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 1rem;
+    min-height: 60vh;
+  }
+  
+  .title-line {
+    font-size: 2.5rem;
+  }
+  
+  .section {
+    padding: 4rem 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .equipment-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .value-card:hover,
+  .equipment-card:hover {
+    transform: none;
+  }
+  
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none;
   }
 }
 </style>

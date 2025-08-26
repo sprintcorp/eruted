@@ -1,445 +1,541 @@
 <template>
   <div class="services-page">
-    <!-- Hero Section -->
-    <section class="hero-section relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-primary-1000 via-primary-950 to-secondary-950"></div>
-      
-      <!-- Floating Photography Elements -->
-      <div class="floating-elements">
-        <div class="floating-element camera-icon" style="top: 15%; left: 15%; animation-delay: 0s;">
-          📷
-        </div>
-        <div class="floating-element lens-icon" style="top: 25%; right: 20%; animation-delay: 1s;">
-          🔍
-        </div>
-        <div class="floating-element film-icon" style="top: 75%; left: 25%; animation-delay: 2s;">
-          🎞️
-        </div>
-        <div class="floating-element tripod-icon" style="top: 65%; right: 15%; animation-delay: 3s;">
-          🦵
-        </div>
-      </div>
-
-      <div class="container mx-auto px-4 py-32 relative z-10">
-        <div class="text-center max-w-4xl mx-auto">
-          <h1 class="text-5xl lg:text-7xl font-bold text-white mb-8 animate-fade-in">
-            Photography <span class="text-gradient">Services</span>
+    <!-- Services Hero Section -->
+    <section class="services-hero bg-gradient-to-b from-white via-white-50 to-white-100 py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="animate-fade-in">
+          <h1 class="text-5xl md:text-6xl font-bold text-primary-1000 mb-6">
+            Our Photography Services
           </h1>
-          <p class="text-xl lg:text-2xl text-white/80 leading-relaxed animate-fade-in" style="animation-delay: 0.2s;">
-            Professional photography services tailored to capture your most precious moments with artistic excellence
+          <p class="text-xl md:text-2xl text-primary-700 max-w-3xl mx-auto leading-relaxed">
+            Professional photography and videography services tailored to capture your most precious moments with artistic vision and technical excellence
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Main Services Grid -->
-    <section class="py-20 bg-primary-900">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <!-- Services Grid -->
+    <section class="services-grid-section bg-white py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="services-grid">
           <div 
-            v-for="(service, index) in mainServices" 
-            :key="service.name"
-            class="service-card animate-fade-in"
-            :style="{ animationDelay: `${index * 0.2}s` }"
+            v-for="(service, index) in services" 
+            :key="service.id"
+            class="service-card-large animate-slide-up"
+            :style="{ animationDelay: `${index * 0.1}s` }"
           >
-            <div class="service-icon">
-              <span class="text-4xl">{{ service.icon }}</span>
+            <div class="service-header">
+              <div class="service-icon-wrapper">
+                <component :is="service.icon" class="w-8 h-8 text-white" />
+              </div>
+              <h3 class="service-title">{{ service.title }}</h3>
+              <p class="service-subtitle">{{ service.subtitle }}</p>
             </div>
+            
             <div class="service-content">
-              <h3 class="text-3xl font-bold text-white mb-4">{{ service.name }}</h3>
-              <p class="text-white/80 text-lg leading-relaxed mb-6">{{ service.description }}</p>
+              <p class="service-description">{{ service.description }}</p>
               
-              <div class="service-features mb-6">
-                <h4 class="text-lg font-semibold text-primary-300 mb-3">What's Included:</h4>
-                <ul class="space-y-2">
-                  <li 
-                    v-for="feature in service.features" 
-                    :key="feature"
-                    class="flex items-center text-white/70"
-                  >
-                    <svg class="w-4 h-4 text-primary-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                    </svg>
+              <div class="service-features">
+                <h4 class="features-title">What's Included:</h4>
+                <ul class="features-list">
+                  <li v-for="feature in service.features" :key="feature" class="feature-item">
+                    <Check class="w-4 h-4 text-primary-600 mr-3" />
                     {{ feature }}
                   </li>
                 </ul>
               </div>
               
               <div class="service-pricing">
-                <div class="text-2xl font-bold text-primary-400 mb-2">Starting at {{ service.startingPrice }}</div>
-                <div class="text-white/60 text-sm">{{ service.pricingNote }}</div>
+                <div class="price-tag">
+                  <span class="price-currency">₦</span>
+                  <span class="price-amount">{{ service.price }}</span>
+                  <span class="price-unit">/session</span>
+                </div>
+                <p class="price-note">{{ service.priceNote }}</p>
               </div>
+            </div>
+            
+            <div class="service-actions">
+              <button class="btn-primary-service">
+                <Calendar class="w-4 h-4 mr-2" />
+                Book Now
+              </button>
+              <button class="btn-secondary-service">
+                <Info class="w-4 h-4 mr-2" />
+                Learn More
+              </button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Additional Services -->
-    <section class="py-20 bg-primary-800">
-      <div class="container mx-auto px-4">
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section bg-gradient-to-b from-white-50 to-white-100 py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 animate-fade-in">
-          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Additional <span class="text-gradient">Services</span>
+          <h2 class="text-4xl md:text-5xl font-bold text-primary-1000 mb-6">
+            Why Choose Uncle Eruted?
           </h2>
-          <p class="text-xl text-white/70 max-w-3xl mx-auto">
-            Specialized photography services to meet all your needs
+          <p class="text-lg md:text-xl text-primary-700 max-w-3xl mx-auto leading-relaxed">
+            Experience the difference that professional expertise, artistic vision, and cutting-edge technology make in capturing your special moments.
           </p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <div class="features-grid">
           <div 
-            v-for="(service, index) in additionalServices" 
-            :key="service.name"
-            class="modern-card p-8 text-center animate-fade-in hover:scale-105 transition-transform duration-300"
+            v-for="(feature, index) in features" 
+            :key="feature.id"
+            class="feature-card animate-scale-in"
             :style="{ animationDelay: `${index * 0.1}s` }"
           >
-            <div class="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <span class="text-3xl">{{ service.icon }}</span>
+            <div class="feature-icon-wrapper">
+              <component :is="feature.icon" class="w-8 h-8 text-primary-600" />
             </div>
-            <h3 class="text-xl font-bold text-white mb-4">{{ service.name }}</h3>
-            <p class="text-white/80 leading-relaxed mb-4">{{ service.description }}</p>
-            <div class="text-primary-400 font-semibold">{{ service.price }}</div>
+            <h3 class="feature-title">{{ feature.title }}</h3>
+            <p class="feature-description">{{ feature.description }}</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Process Section -->
-    <section class="py-20 bg-primary-900">
-      <div class="container mx-auto px-4">
+    <section class="process-section bg-white py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 animate-fade-in">
-          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-            How It <span class="text-gradient">Works</span>
+          <h2 class="text-4xl md:text-5xl font-bold text-primary-1000 mb-6">
+            Our Photography Process
           </h2>
-          <p class="text-xl text-white/70 max-w-3xl mx-auto">
-            A simple, streamlined process from consultation to final delivery
+          <p class="text-lg md:text-xl text-primary-700 max-w-3xl mx-auto leading-relaxed">
+            From initial consultation to final delivery, we ensure every step of your photography experience is seamless and enjoyable.
           </p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <div class="process-timeline">
           <div 
             v-for="(step, index) in processSteps" 
-            :key="step.title"
-            class="text-center animate-fade-in"
+            :key="step.id"
+            class="process-step animate-slide-up"
             :style="{ animationDelay: `${index * 0.2}s` }"
           >
-            <div class="relative mb-6">
-              <div class="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold text-white">
-                {{ index + 1 }}
-              </div>
-              <div class="absolute -top-2 -right-2 w-8 h-8 bg-accent-500 rounded-full flex items-center justify-center">
-                <span class="text-2xl">{{ step.icon }}</span>
-              </div>
+            <div class="step-number">{{ step.number }}</div>
+            <div class="step-content">
+              <h3 class="step-title">{{ step.title }}</h3>
+              <p class="step-description">{{ step.description }}</p>
             </div>
-            <h3 class="text-xl font-bold text-white mb-4">{{ step.title }}</h3>
-            <p class="text-white/80 leading-relaxed">{{ step.description }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Equipment Showcase -->
-    <section class="py-20 bg-primary-800">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16 animate-fade-in">
-          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Professional <span class="text-gradient">Equipment</span>
-          </h2>
-          <p class="text-xl text-white/70 max-w-3xl mx-auto">
-            State-of-the-art gear ensuring the highest quality results
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div 
-            v-for="(item, index) in equipment" 
-            :key="item.name"
-            class="equipment-card text-center animate-fade-in"
-            :style="{ animationDelay: `${index * 0.1}s` }"
-          >
-            <div class="w-16 h-16 bg-gradient-to-br from-secondary-700 to-secondary-800 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <span class="text-2xl">{{ item.icon }}</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">{{ item.name }}</h3>
-            <p class="text-white/70 text-sm">{{ item.description }}</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-primary-800 to-primary-900">
-      <div class="container mx-auto px-4 text-center">
-        <div class="max-w-4xl mx-auto space-y-8 animate-fade-in">
-          <h2 class="text-4xl lg:text-5xl font-bold text-white">
-            Ready to <span class="text-gradient">Get Started</span>?
+    <section class="cta-section bg-gradient-to-br from-primary-1000 via-primary-900 to-primary-800 text-white py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="animate-fade-in">
+          <h2 class="text-4xl md:text-5xl font-bold mb-8">
+            Ready to Capture Your Story?
           </h2>
-          <p class="text-xl text-white/80 leading-relaxed">
-            Let's discuss your photography needs and create a custom package that's perfect for you.
+          <p class="text-lg md:text-xl text-primary-100 mb-10 max-w-3xl mx-auto leading-relaxed">
+            Let's discuss your photography needs and create a custom package that perfectly captures your vision.
           </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <NuxtLink to="/booking" class="btn-primary text-lg px-8 py-4">
+          <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <button class="btn-white-large">
+              <Calendar class="w-5 h-5 mr-3" />
               Book Your Session
-              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-              </svg>
-            </NuxtLink>
-            <NuxtLink to="/contact" class="btn-secondary text-lg px-8 py-4">
-              Get In Touch
-              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-              </svg>
-            </NuxtLink>
+            </button>
+            <button class="btn-outline-white-large">
+              <Mail class="w-5 h-5 mr-3" />
+              Get a Quote
+            </button>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Mobile Navigation -->
+    <MobileNav />
   </div>
 </template>
 
-<script setup lang="ts">
-// Main services data
-const mainServices = [
+<script setup>
+import { 
+  Camera, 
+  Heart, 
+  Video, 
+  Briefcase, 
+  Users, 
+  Edit3, 
+  Check, 
+  Calendar, 
+  Info,
+  Star,
+  Zap,
+  Shield,
+  Clock,
+  Award,
+  Target,
+  Palette,
+  Mail
+} from 'lucide-vue-next'
+
+// Services data
+const services = [
   {
-    icon: '💒',
-    name: 'Wedding Photography',
-    description: 'Comprehensive wedding photography coverage from engagement to reception, capturing every precious moment of your special day.',
+    id: 1,
+    icon: Camera,
+    title: 'Portrait Photography',
+    subtitle: 'Professional & Creative Portraits',
+    description: 'Capture your personality and essence with our professional portrait photography services. From headshots to creative artistic portraits, we create stunning images that tell your story.',
     features: [
-      'Engagement session',
-      'Full wedding day coverage',
-      'Professional editing',
-      'Online gallery',
-      'Print rights',
-      'Wedding album design'
-    ],
-    startingPrice: '$1,500',
-    pricingNote: 'Custom packages available based on coverage needs'
-  },
-  {
-    icon: '🎉',
-    name: 'Event Photography',
-    description: 'Professional event photography for corporate events, parties, celebrations, and special occasions.',
-    features: [
-      'Event coverage',
-      'Professional editing',
-      'Quick turnaround',
-      'Online gallery',
-      'Print rights',
-      'Event highlights video'
-    ],
-    startingPrice: '$300',
-    pricingNote: 'Per hour, minimum 2 hours'
-  },
-  {
-    icon: '👤',
-    name: 'Portrait Photography',
-    description: 'Beautiful, professional portraits for individuals, families, and professionals.',
-    features: [
-      'Studio or outdoor sessions',
-      'Professional editing',
+      'Professional lighting setup',
       'Multiple outfit changes',
-      'Online gallery',
-      'Print rights',
-      'Print packages available'
+      'Location or studio options',
+      'Professional editing & retouching',
+      'High-resolution digital files',
+      'Print-ready formats'
     ],
-    startingPrice: '$200',
-    pricingNote: 'Per session, includes 20 edited images'
+    price: '25,000',
+    priceNote: 'Starting price, custom packages available'
   },
   {
-    icon: '🏢',
-    name: 'Commercial Photography',
-    description: 'High-quality commercial photography for businesses, products, and marketing materials.',
+    id: 2,
+    icon: Heart,
+    title: 'Wedding Photography',
+    subtitle: 'Complete Wedding Coverage',
+    description: 'Comprehensive wedding photography coverage from engagement to reception. We capture every precious moment with artistic vision and attention to detail.',
     features: [
-      'Product photography',
-      'Business portraits',
-      'Marketing imagery',
-      'Professional editing',
-      'Commercial usage rights',
-      'Quick turnaround'
+      'Full day coverage (8-12 hours)',
+      'Engagement session included',
+      'Professional editing & retouching',
+      'Online gallery & USB delivery',
+      'Wedding album design',
+      'Print rights & social media files'
     ],
-    startingPrice: '$400',
-    pricingNote: 'Per project, custom quotes available'
+    price: '150,000',
+    priceNote: 'Full wedding coverage, custom packages available'
+  },
+  {
+    id: 3,
+    icon: Video,
+    title: 'Videography',
+    subtitle: 'Cinematic Video Production',
+    description: 'Professional video services including event coverage, promotional videos, and cinematic storytelling that brings your story to life.',
+    features: [
+      '4K video recording',
+      'Professional audio recording',
+      'Cinematic editing & color grading',
+      'Multiple camera angles',
+      'Background music & sound effects',
+      'Multiple delivery formats'
+    ],
+    price: '80,000',
+    priceNote: 'Starting price, custom packages available'
+  },
+  {
+    id: 4,
+    icon: Briefcase,
+    title: 'Commercial Photography',
+    subtitle: 'Business & Product Photography',
+    description: 'High-quality product and commercial photography to enhance your business marketing materials and brand presence.',
+    features: [
+      'Product photography setup',
+      'Professional lighting & styling',
+      'Multiple product angles',
+      'Background options',
+      'High-resolution files',
+      'Commercial usage rights'
+    ],
+    price: '35,000',
+    priceNote: 'Per product, bulk discounts available'
+  },
+  {
+    id: 5,
+    icon: Users,
+    title: 'Event Photography',
+    subtitle: 'Corporate & Social Events',
+    description: 'Professional coverage for corporate events, parties, and special occasions with high-quality images that capture the energy and atmosphere.',
+    features: [
+      'Event coverage (2-6 hours)',
+      'Candid & posed shots',
+      'Professional editing',
+      'Quick turnaround time',
+      'Online gallery delivery',
+      'Print-ready files'
+    ],
+    price: '45,000',
+    priceNote: 'Per hour, minimum 2 hours'
+  },
+  {
+    id: 6,
+    icon: Edit3,
+    title: 'Photo Editing',
+    subtitle: 'Professional Post-Processing',
+    description: 'Professional post-processing and retouching services to ensure your images look their absolute best.',
+    features: [
+      'Color correction & grading',
+      'Skin retouching & smoothing',
+      'Background enhancement',
+      'Object removal & manipulation',
+      'Multiple editing styles',
+      'Fast turnaround time'
+    ],
+    price: '5,000',
+    priceNote: 'Per image, bulk discounts available'
   }
 ]
 
-// Additional services data
-const additionalServices = [
+// Features data
+const features = [
   {
-    icon: '🎥',
-    name: 'Videography',
-    description: 'Professional video services for weddings, events, and commercial projects.',
-    price: 'Starting at $800'
+    id: 1,
+    icon: Star,
+    title: '5+ Years Experience',
+    description: 'Over 5 years of professional photography experience with hundreds of satisfied clients.'
   },
   {
-    icon: '✏️',
-    name: 'Photo Editing',
-    description: 'Professional photo editing and retouching services for existing images.',
-    price: 'Starting at $25'
+    id: 2,
+    icon: Zap,
+    title: 'Fast Turnaround',
+    description: 'Quick delivery times without compromising on quality. Get your photos within 3-7 days.'
   },
   {
-    icon: '🖼️',
-    name: 'Print Services',
-    description: 'High-quality prints, canvases, and albums for your favorite images.',
-    price: 'Starting at $15'
+    id: 3,
+    icon: Shield,
+    title: 'Quality Guarantee',
+    description: '100% satisfaction guarantee. We work until you\'re completely happy with your photos.'
   },
   {
-    icon: '📱',
-    name: 'Social Media',
-    description: 'Optimized images and content for social media platforms.',
-    price: 'Starting at $100'
+    id: 4,
+    icon: Clock,
+    title: 'Flexible Scheduling',
+    description: 'Available for sessions during weekdays, weekends, and evenings to accommodate your schedule.'
   },
   {
-    icon: '🎨',
-    name: 'Custom Albums',
-    description: 'Beautiful, custom-designed photo albums and books.',
-    price: 'Starting at $200'
+    id: 5,
+    icon: Award,
+    title: 'Professional Equipment',
+    description: 'State-of-the-art camera equipment and professional lighting for the highest quality results.'
   },
   {
-    icon: '🚀',
-    name: 'Rush Delivery',
-    description: 'Expedited editing and delivery for urgent projects.',
-    price: 'Additional $100'
+    id: 6,
+    icon: Target,
+    title: 'Custom Packages',
+    description: 'Tailored photography packages designed to meet your specific needs and budget.'
   }
 ]
 
-// Process steps data
+// Process steps
 const processSteps = [
   {
-    icon: '💬',
-    title: 'Consultation',
-    description: 'We discuss your vision, requirements, and create a custom photography plan.'
+    id: 1,
+    number: '01',
+    title: 'Initial Consultation',
+    description: 'We discuss your vision, requirements, and create a custom photography package that fits your needs.'
   },
   {
-    icon: '📅',
-    title: 'Booking',
-    description: 'Secure your date with a deposit and receive detailed preparation information.'
+    id: 2,
+    number: '02',
+    title: 'Planning & Preparation',
+    description: 'We plan the perfect location, timing, and styling to ensure your session is a success.'
   },
   {
-    icon: '📸',
-    title: 'Photography',
-    description: 'Professional photography session with guidance and direction throughout.'
+    id: 3,
+    number: '03',
+    title: 'Photography Session',
+    description: 'On the day of your session, we capture beautiful moments with professional expertise and artistic vision.'
   },
   {
-    icon: '🎁',
-    title: 'Delivery',
-    description: 'Receive your beautifully edited images in an online gallery within 2 weeks.'
+    id: 4,
+    number: '04',
+    title: 'Editing & Retouching',
+    description: 'We carefully edit and retouch your images to ensure they look their absolute best.'
+  },
+  {
+    id: 5,
+    number: '05',
+    title: 'Delivery & Follow-up',
+    description: 'Receive your final images through our online gallery and follow up to ensure your complete satisfaction.'
   }
 ]
 
-// Equipment data
-const equipment = [
-  {
-    icon: '📷',
-    name: 'Canon EOS R5',
-    description: '45MP full-frame mirrorless camera'
-  },
-  {
-    icon: '🔍',
-    name: 'RF 24-70mm f/2.8',
-    description: 'Professional zoom lens'
-  },
-  {
-    icon: '💡',
-    name: 'Profoto B10',
-    description: 'Professional lighting system'
-  },
-  {
-    icon: '🦵',
-    name: 'Manfrotto MT055',
-    description: 'Professional tripod system'
-  },
-  {
-    icon: '📱',
-    name: 'iPad Pro',
-    description: 'On-site image review'
-  },
-  {
-    icon: '💻',
-    name: 'MacBook Pro',
-    description: 'Professional editing workstation'
-  },
-  {
-    icon: '🔋',
-    name: 'Backup Batteries',
-    description: 'Never miss a moment'
-  },
-  {
-    icon: '💾',
-    name: 'Dual Memory Cards',
-    description: 'Redundant storage system'
-  }
-]
+// SEO Meta
+useHead({
+  title: 'Services - Uncle Eruted Photography',
+  meta: [
+    {
+      name: 'description',
+      content: 'Professional photography services including portraits, weddings, events, and commercial photography. View our pricing and book your session today.'
+    }
+  ]
+})
 </script>
 
 <style scoped>
+/* Services page styles */
 .services-page {
-  min-height: 100vh;
+  @apply bg-white;
 }
 
-.hero-section {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
+/* Services grid */
+.services-grid {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
 }
 
-.floating-elements {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+.service-card-large {
+  @apply bg-white rounded-3xl p-8 shadow-md hover:shadow-lg transition-all duration-500 hover:-translate-y-2 border border-slate-200 hover:border-slate-300;
 }
 
-.floating-element {
-  position: absolute;
-  font-size: 3rem;
-  opacity: 0.1;
-  animation: float 6s ease-in-out infinite;
+.service-header {
+  @apply text-center mb-8;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+.service-icon-wrapper {
+  @apply w-20 h-20 bg-gradient-to-br from-slate-600 to-slate-800 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-md;
 }
 
-.text-gradient {
-  @apply bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent;
+.service-title {
+  @apply text-2xl font-bold text-slate-900 mb-3;
 }
 
-.service-card {
-  @apply bg-secondary-900/80 backdrop-blur-xl rounded-2xl p-8 border border-secondary-800/50 hover:border-primary-500/50 hover:shadow-2xl hover:shadow-primary-500/20 transition-all duration-300;
+.service-subtitle {
+  @apply text-slate-600 font-medium;
 }
 
-.service-icon {
-  @apply w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mb-6;
+.service-content {
+  @apply mb-8;
 }
 
-.modern-card {
-  @apply bg-secondary-900/80 backdrop-blur-xl rounded-2xl border border-secondary-800/50 hover:border-primary-500/50 hover:shadow-2xl hover:shadow-primary-500/20 transition-all duration-300;
+.service-description {
+  @apply text-slate-700 mb-6 leading-relaxed;
 }
 
-.equipment-card {
-  @apply bg-secondary-900/60 backdrop-blur-xl rounded-xl p-6 border border-secondary-700/30 hover:border-primary-400/50 transition-all duration-300;
+.service-features {
+  @apply mb-6;
 }
 
-.btn-primary {
-  @apply inline-flex items-center bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+.features-title {
+  @apply text-lg font-semibold text-slate-900 mb-4;
 }
 
-.btn-secondary {
-  @apply inline-flex items-center bg-transparent border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300;
+.features-list {
+  @apply space-y-3;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-  opacity: 0;
-  transform: translateY(30px);
+.feature-item {
+  @apply flex items-center text-slate-700;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+.service-pricing {
+  @apply text-center mb-6;
+}
+
+.price-tag {
+  @apply text-3xl font-bold text-slate-900 mb-2;
+}
+
+.price-currency {
+  @apply text-slate-600;
+}
+
+.price-amount {
+  @apply text-slate-900;
+}
+
+.price-unit {
+  @apply text-slate-600 text-lg;
+}
+
+.price-note {
+  @apply text-sm text-slate-500;
+}
+
+.service-actions {
+  @apply flex flex-col sm:flex-row gap-3;
+}
+
+.btn-primary-service {
+  @apply bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-slate-800 hover:scale-105 shadow-md hover:shadow-lg flex items-center justify-center;
+}
+
+.btn-secondary-service {
+  @apply bg-white text-slate-900 border-2 border-slate-900 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-slate-50 hover:scale-105 shadow-md hover:shadow-lg flex items-center justify-center;
+}
+
+/* Features grid */
+.features-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+.feature-card {
+  @apply bg-white rounded-3xl p-8 shadow-md hover:shadow-lg transition-all duration-500 hover:-translate-y-2 border border-slate-200 hover:border-slate-300;
+}
+
+.feature-icon-wrapper {
+  @apply w-16 h-16 bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl flex items-center justify-center mb-6 shadow-md;
+}
+
+.feature-title {
+  @apply text-xl font-bold text-slate-900 mb-4;
+}
+
+.feature-description {
+  @apply text-slate-700 leading-relaxed;
+}
+
+/* Process timeline */
+.process-timeline {
+  @apply space-y-8;
+}
+
+.process-step {
+  @apply flex items-start space-x-6;
+}
+
+.step-number {
+  @apply w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center text-lg font-bold flex-shrink-0;
+}
+
+.step-content {
+  @apply flex-1;
+}
+
+.step-title {
+  @apply text-xl font-bold text-slate-900 mb-3;
+}
+
+.step-description {
+  @apply text-slate-700 leading-relaxed;
+}
+
+/* Button styles */
+.btn-white-large {
+  @apply bg-white text-slate-900 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-slate-50 hover:scale-105 shadow-md hover:shadow-lg flex items-center justify-center;
+}
+
+.btn-outline-white-large {
+  @apply border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:bg-white hover:text-slate-900 flex items-center justify-center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .services-grid {
+    @apply grid-cols-1 gap-6;
+  }
+  
+  .service-card-large {
+    @apply p-6;
+  }
+  
+  .features-grid {
+    @apply grid-cols-1 gap-6;
+  }
+  
+  .process-step {
+    @apply flex-col text-center space-x-0 space-y-4;
+  }
+  
+  .btn-white-large, .btn-outline-white-large {
+    @apply px-6 py-3 text-sm;
   }
 }
 </style>

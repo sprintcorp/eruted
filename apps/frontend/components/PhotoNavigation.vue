@@ -1,596 +1,717 @@
 <template>
   <div class="photo-navigation">
-    <!-- Desktop Camera Navigation (hidden on mobile) -->
+    <!-- Desktop Navigation (simple top nav, non-sticky) -->
     <div class="hidden md:block desktop-nav">
-      <!-- Camera Icon Trigger -->
-      <div
-        class="camera-trigger"
-        @click="toggleNavigation"
-        :class="{ 'active': isNavigationOpen }"
-      >
-        <div class="camera-body">
-          <div class="camera-lens">
-            <div class="lens-ring outer"></div>
-            <div class="lens-ring middle"></div>
-            <div class="lens-ring inner"></div>
-            <div class="lens-aperture" :class="{ 'open': isNavigationOpen }"></div>
+      <nav class="top-nav">
+        <div class="nav-container">
+          <div class="nav-logo">
+            <div class="camera-logo">
+              <div class="lens-aperture"></div>
+              <div class="camera-body"></div>
+            </div>
+            <span class="brand-text">Uncle Eruted</span>
           </div>
-          <div class="camera-top">
-            <div class="flash"></div>
-            <div class="viewfinder"></div>
+          
+          <div class="nav-links">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/gallery" class="nav-link">Gallery</a>
+            <a href="/services" class="nav-link">Services</a>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/contact" class="nav-link">Contact</a>
           </div>
-          <div class="camera-grip"></div>
+          
+          <button class="cta-button">
+            Book Session
+          </button>
         </div>
+      </nav>
+    </div>
 
-        <!-- Click indicator -->
-        <div class="click-hint" v-if="!isNavigationOpen">
-          <span>Click to navigate</span>
+    <!-- Mobile Navigation (LinkedIn-style bottom nav) -->
+    <div class="md:hidden mobile-nav">
+      <!-- Bottom Navigation Bar -->
+      <div class="mobile-nav-bar">
+        <div class="nav-container">
+          <div
+            v-for="item in navigationItems"
+            :key="item.path"
+            class="nav-item"
+            :class="{ 'active': currentPath === item.path }"
+            @click="navigateTo(item.path)"
+          >
+            <div class="nav-icon-wrapper">
+              <component :is="item.icon" class="nav-icon" />
+              <div class="nav-label">{{ item.label }}</div>
+            </div>
+            
+            <!-- Active Indicator -->
+            <div class="active-indicator" v-if="currentPath === item.path"></div>
+          </div>
+          
+          <!-- Hamburger Menu Trigger -->
+          <div class="nav-item menu-trigger" @click="toggleMenu">
+            <div class="nav-icon-wrapper">
+              <Menu class="nav-icon" />
+              <div class="nav-label">Menu</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Single Photography Navigation Menu -->
-      <Transition name="photo-nav">
-        <div v-if="isNavigationOpen" class="photo-nav-menu">
-          <div class="nav-header">
-            <div class="brand-logo">
-              <div class="camera-icon">📷</div>
-              <div class="brand-text">
-                <div class="brand-name">Uncle Eruted</div>
-                <div class="brand-subtitle">Photography</div>
-              </div>
-            </div>
-            <div class="close-btn" @click="toggleNavigation">×</div>
-          </div>
-          
-          <div class="nav-content">
-            <div class="nav-items">
-              <div
-                v-for="item in navigationItems"
-                :key="item.path"
-                class="nav-item"
-                :class="{ 'active': currentPath === item.path }"
-                @click="navigateTo(item.path)"
-              >
-                <div class="item-icon">{{ getItemIcon(item.path) }}</div>
-                <div class="item-label">{{ item.label }}</div>
-              </div>
-            </div>
+      <!-- Full-Screen Glassmorphism Drawer -->
+      <Transition name="drawer">
+        <div v-if="isMenuOpen" class="menu-drawer" @click="closeMenu">
+          <div class="drawer-content" @click.stop>
+            <!-- Blueprint Grid Background -->
+            <div class="blueprint-grid"></div>
             
-            <div class="nav-actions">
-              <button class="btn-primary" @click="navigateTo('/booking')">
-                Book Your Session
+            <!-- Drawer Header -->
+            <div class="drawer-header">
+              <div class="drawer-logo">
+                <div class="camera-logo-large">
+                  <div class="lens-aperture-large"></div>
+                  <div class="camera-body-large"></div>
+                </div>
+                <div class="brand-info">
+                  <h2 class="brand-name">Uncle Eruted</h2>
+                  <p class="brand-subtitle">Professional Photography</p>
+                </div>
+              </div>
+              <button class="close-button" @click="closeMenu">
+                <X class="w-6 h-6" />
               </button>
             </div>
+
+            <!-- Navigation Menu -->
+            <nav class="drawer-nav">
+              <div class="nav-section">
+                <h3 class="section-title">Main Navigation</h3>
+                <div class="nav-links-grid">
+                  <a 
+                    v-for="item in navigationItems" 
+                    :key="item.path"
+                    :href="item.path"
+                    class="drawer-nav-link"
+                    :class="{ 'active': currentPath === item.path }"
+                    @click="navigateToAndClose(item.path)"
+                  >
+                    <component :is="item.icon" class="link-icon" />
+                    <span class="link-text">{{ item.label }}</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="nav-section">
+                <h3 class="section-title">Quick Actions</h3>
+                <div class="quick-actions">
+                  <button class="action-button primary">
+                    <Calendar class="w-5 h-5" />
+                    <span>Book Session</span>
+                  </button>
+                  <button class="action-button secondary">
+                    <Phone class="w-5 h-5" />
+                    <span>Call Now</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="nav-section">
+                <h3 class="section-title">Contact Info</h3>
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <Phone class="w-5 h-5" />
+                    <span>+234 807 095 3724</span>
+                  </div>
+                  <div class="contact-item">
+                    <Mail class="w-5 h-5" />
+                    <span>Okuneyetewo@gmail.com</span>
+                  </div>
+                  <div class="contact-item">
+                    <MapPin class="w-5 h-5" />
+                    <span>8, Elder Adedokun Close, Ashi, Bodija, Ibadan</span>
+                  </div>
+                </div>
+              </div>
+            </nav>
           </div>
         </div>
       </Transition>
-    </div>
 
-    <!-- Mobile Bottom Navigation Bar (LinkedIn Style) -->
-    <div class="md:hidden mobile-bottom-nav">
-      <div class="nav-container">
-        <div
-          v-for="item in navigationItems"
-          :key="item.path"
-          class="nav-item"
-          :class="{ 'active': currentPath === item.path }"
-          @click="navigateTo(item.path)"
-        >
-          <div class="nav-icon">
-            <!-- Home Icon -->
-            <svg v-if="item.path === '/'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
-              <path v-if="currentPath === item.path" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-              <path v-else d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="none" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            
-            <!-- Gallery Icon -->
-            <svg v-else-if="item.path === '/gallery'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
-              <path v-if="currentPath === item.path" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z"/>
-              <path v-else d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            
-            <!-- Services Icon -->
-            <svg v-else-if="item.path === '/services'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
-              <path v-if="currentPath === item.path" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-              <path v-if="currentPath === item.path" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-              <path v-else d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" fill="none" stroke="currentColor" stroke-width="2"/>
-              <path v-if="currentPath === item.path" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-              <path v-else d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" fill="none" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            
-            <!-- About Icon -->
-            <svg v-else-if="item.path === '/about'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
-              <path v-if="currentPath === item.path" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-              <path v-else d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" fill="none" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            
-            <!-- Booking Icon -->
-            <svg v-else-if="item.path === '/booking'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
-              <path v-if="currentPath === item.path" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              <path v-else d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2v12a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
-              <!-- Notification Badge -->
-              <div v-if="hasNewBookings" class="notification-badge">
-                <span>1</span>
-              </div>
-            </svg>
-            
-            <!-- Contact Icon -->
-            <svg v-else-if="item.path === '/contact'" class="icon" :class="{ 'filled': currentPath === item.path }" viewBox="0 0 24 24" fill="currentColor">
-              <path v-if="currentPath === item.path" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2v10a2 2 0 002 2z"/>
-              <path v-else d="M3 8l7.89 4.26a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2v10a2 2 0 002 2z" fill="none" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </div>
-          <div class="nav-label">{{ item.label }}</div>
-        </div>
-      </div>
+      <!-- Backdrop -->
+      <Transition name="backdrop">
+        <div v-if="isMenuOpen" class="drawer-backdrop" @click="closeMenu"></div>
+      </Transition>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router'
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, defineComponent, h, onMounted, onUnmounted } from 'vue'
+import { 
+  Home, 
+  Image, 
+  Settings, 
+  User, 
+  Mail, 
+  Menu, 
+  X, 
+  Calendar, 
+  Phone, 
+  MapPin 
+} from 'lucide-vue-next'
 
 const router = useRouter()
 const route = useRoute()
 
 const currentPath = computed(() => route.path)
-const isNavigationOpen = ref(false)
-const hasNewBookings = ref(true) // Example: you can make this dynamic
+const isMenuOpen = ref(false)
 
 const navigationItems = [
-  { path: '/', label: 'Home' },
-  { path: '/gallery', label: 'Gallery' },
-  { path: '/services', label: 'Services' },
-  { path: '/about', label: 'About' },
-  { path: '/booking', label: 'Book' },
-  { path: '/contact', label: 'Contact' }
+  { path: '/', label: 'Home', icon: Home },
+  { path: '/gallery', label: 'Gallery', icon: Image },
+  { path: '/services', label: 'Services', icon: Settings },
+  { path: '/about', label: 'About', icon: User },
+  { path: '/contact', label: 'Contact', icon: Mail }
 ]
 
-const getItemIcon = (path: string) => {
-  const icons: Record<string, string> = {
-    '/': '🏠',
-    '/gallery': '📸',
-    '/services': '⚙️',
-    '/about': '👤',
-    '/booking': '📅',
-    '/contact': '📧'
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+  if (isMenuOpen.value) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = 'unset'
   }
-  return icons[path] || '🔗'
 }
 
-const toggleNavigation = () => {
-  isNavigationOpen.value = !isNavigationOpen.value
+const closeMenu = () => {
+  isMenuOpen.value = false
+  document.body.style.overflow = 'unset'
 }
 
 const navigateTo = (path: string) => {
   router.push(path)
-  // Keep navigation open for a moment to show the transition
-  setTimeout(() => {
-    isNavigationOpen.value = false
-  }, 500)
 }
 
-// Close navigation when route changes
+const navigateToAndClose = (path: string) => {
+  router.push(path)
+  closeMenu()
+}
+
+// Close menu when route changes
 watch(currentPath, () => {
-  if (isNavigationOpen.value) {
-    setTimeout(() => {
-      isNavigationOpen.value = false
-    }, 300)
+  if (isMenuOpen.value) {
+    closeMenu()
   }
+})
+
+// Close menu on escape key
+onMounted(() => {
+  const handleEscape = (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && isMenuOpen.value) {
+      closeMenu()
+    }
+  }
+  document.addEventListener('keydown', handleEscape)
+  
+  onUnmounted(() => {
+    document.removeEventListener('keydown', handleEscape)
+  })
 })
 </script>
 
 <style scoped>
+/* Photo Navigation - Strict Color System */
 .photo-navigation {
-  position: fixed;
-  top: 50%;
-  right: 30px;
-  transform: translateY(-50%);
+  position: relative;
   z-index: 1000;
 }
 
 /* Desktop Navigation */
 .desktop-nav {
   position: relative;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border-color);
 }
 
-.camera-trigger {
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
+.top-nav {
+  padding: 1rem 2rem;
 }
 
-.camera-trigger:hover {
-  transform: scale(1.05);
-}
-
-.camera-trigger.active {
-  transform: scale(1.1);
-}
-
-.camera-body {
-  width: 80px;
-  height: 60px;
-  background: linear-gradient(145deg, #1a1a2e, #16213e);
-  border-radius: 15px;
-  position: relative;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 2px solid #0ea5e9;
-}
-
-.camera-lens {
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #0f172a, #1e293b);
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border: 2px solid #0ea5e9;
+  justify-content: space-between;
 }
 
-.lens-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid #0ea5e9;
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.lens-ring.outer {
-  width: 36px;
-  height: 36px;
-}
-
-.lens-ring.middle {
-  width: 28px;
-  height: 28px;
-}
-
-.lens-ring.inner {
-  width: 20px;
-  height: 20px;
+.camera-logo {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .lens-aperture {
-  width: 12px;
-  height: 12px;
-  background: #0ea5e9;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--deep);
   border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.lens-aperture.open {
-  background: #fbbf24;
-  box-shadow: 0 0 20px #fbbf24;
-}
-
-.camera-top {
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 8px;
-  background: #0f172a;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 8px;
-}
-
-.flash {
-  width: 12px;
-  height: 6px;
-  background: #fbbf24;
-  border-radius: 2px;
-}
-
-.viewfinder {
-  width: 16px;
-  height: 6px;
-  background: #0ea5e9;
-  border-radius: 2px;
-}
-
-.camera-grip {
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 8px;
-  background: #0f172a;
-  border-radius: 4px;
-}
-
-.click-hint {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 10px;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  white-space: nowrap;
   opacity: 0.8;
 }
 
-/* Desktop Navigation Menu */
-.photo-nav-menu {
+.camera-body {
   position: absolute;
-  top: 0;
-  right: 100px;
-  width: 300px;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  border: 1px solid #0ea5e9;
-  backdrop-filter: blur(20px);
-}
-
-.nav-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.camera-icon {
-  font-size: 24px;
-  filter: drop-shadow(0 0 10px #fbbf24);
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 6px;
+  background: var(--ink);
+  border-radius: 3px;
 }
 
 .brand-text {
-  color: white;
-}
-
-.brand-name {
-  font-size: 18px;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: white;
+  color: var(--ink);
 }
 
-.brand-subtitle {
-  font-size: 12px;
-  color: #0ea5e9;
-  font-weight: 500;
-}
-
-.close-btn {
-  width: 32px;
-  height: 32px;
-  background: #0ea5e9;
-  border-radius: 50%;
+.nav-links {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  gap: 2rem;
 }
 
-.close-btn:hover {
-  background: #0284c7;
-  transform: scale(1.1);
-}
-
-.nav-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.nav-items {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 16px 12px;
-  background: rgba(15, 23, 42, 0.5);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
-}
-
-.nav-item:hover {
-  background: rgba(15, 23, 42, 0.8);
-  border-color: #0ea5e9;
-  transform: translateY(-2px);
-}
-
-.nav-item.active {
-  background: rgba(14, 165, 233, 0.2);
-  border-color: #0ea5e9;
-}
-
-.item-icon {
-  font-size: 24px;
-  filter: drop-shadow(0 0 8px #0ea5e9);
-}
-
-.item-label {
-  color: white;
-  font-size: 14px;
+.nav-link {
+  color: var(--ink);
+  text-decoration: none;
   font-weight: 500;
-  text-align: center;
+  transition: color 0.2s ease;
 }
 
-.nav-actions {
-  display: flex;
-  justify-content: center;
+.nav-link:hover {
+  color: var(--deep);
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #0ea5e9, #0284c7);
-  color: white;
+.cta-button {
+  background: var(--ink);
+  color: var(--paper);
   border: none;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-size: 14px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(14, 165, 233, 0.4);
+.cta-button:hover {
+  background: var(--deep);
+  transform: translateY(-1px);
 }
 
-/* Mobile Bottom Navigation - LinkedIn Style */
-.mobile-bottom-nav {
+/* Mobile Navigation */
+.mobile-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: #ffffff;
-  border-top: 1px solid #e0e0e0;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav-bar {
+  background: var(--paper);
+  border-top: 1px solid var(--border-color);
+  box-shadow: var(--soft);
+  padding: 0.5rem 0 1.5rem 0;
+  position: relative;
 }
 
 .nav-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 8px 0 4px 0;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .nav-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4px 8px;
-  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
   cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 60px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 4rem;
+  user-select: none;
 }
 
 .nav-item:hover {
-  background: rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
 }
 
 .nav-item.active {
-  background: transparent;
+  background: var(--deep);
+  color: var(--paper);
+}
+
+.nav-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  position: relative;
 }
 
 .nav-icon {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  margin-bottom: 4px;
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: all 0.3s ease;
 }
 
-.icon {
-  width: 24px;
-  height: 24px;
-  transition: all 0.2s ease;
+.nav-item:not(.active) .nav-icon {
+  color: var(--ink);
 }
 
-.icon.filled {
-  color: #0a66c2;
-}
-
-.icon:not(.filled) {
-  color: #666666;
-}
-
-.nav-item.active .icon {
-  color: #0a66c2;
+.nav-item.active .nav-icon {
+  color: var(--paper);
 }
 
 .nav-label {
-  font-size: 11px;
-  font-weight: 400;
-  color: #666666;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink);
   text-align: center;
   line-height: 1.2;
+  transition: all 0.3s ease;
 }
 
 .nav-item.active .nav-label {
-  color: #0a66c2;
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.active-indicator {
+  position: absolute;
+  top: -0.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.25rem;
+  height: 0.25rem;
+  background: var(--deep);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+/* Menu Drawer */
+.menu-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: flex;
+  align-items: flex-end;
+}
+
+.drawer-content {
+  background: var(--paper);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
+  padding: 2rem 1.5rem 6rem 1.5rem;
+}
+
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, var(--ink) 1px, transparent 1px),
+    linear-gradient(0deg, var(--ink) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.drawer-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.camera-logo-large {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+}
+
+.lens-aperture-large {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--deep);
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.camera-body-large {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 8px;
+  background: var(--ink);
+  border-radius: 4px;
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+
+.brand-subtitle {
+  font-size: 0.875rem;
+  color: var(--deep);
+  margin: 0;
   font-weight: 500;
 }
 
-.nav-item:hover .nav-label {
-  color: #0a66c2;
-}
-
-.notification-badge {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background: #d11124;
-  color: white;
-  width: 18px;
-  height: 18px;
+.close-button {
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: var(--deep);
+  transform: scale(1.1);
+}
+
+/* Drawer Navigation */
+.drawer-nav {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-section {
+  margin-bottom: 2.5rem;
+}
+
+.section-title {
+  font-size: 1rem;
   font-weight: 600;
-  border: 2px solid #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--ink);
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-links-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.drawer-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(16, 36, 61, 0.02);
+  border: 1px solid rgba(16, 36, 61, 0.08);
+  border-radius: 0.75rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.2s ease;
+}
+
+.drawer-nav-link:hover {
+  background: rgba(16, 36, 61, 0.04);
+  border-color: rgba(16, 36, 61, 0.12);
+  transform: translateX(4px);
+}
+
+.drawer-nav-link.active {
+  background: var(--deep);
+  color: var(--paper);
+  border-color: var(--deep);
+}
+
+.link-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.link-text {
+  font-weight: 500;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-button.primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.action-button.primary:hover {
+  background: var(--deep);
+  transform: translateY(-1px);
+}
+
+.action-button.secondary {
+  background: rgba(16, 36, 61, 0.02);
+  color: var(--ink);
+  border: 1px solid rgba(16, 36, 61, 0.08);
+}
+
+.action-button.secondary:hover {
+  background: rgba(16, 36, 61, 0.04);
+  transform: translateY(-1px);
+}
+
+/* Contact Info */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(16, 36, 61, 0.02);
+  border-radius: 0.5rem;
+  color: var(--ink);
+}
+
+.contact-item span {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Backdrop */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 15, 28, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
 }
 
 /* Transitions */
-.photo-nav-enter-active,
-.photo-nav-leave-active {
-  transition: all 0.3s ease;
+.drawer-enter-active,
+.drawer-leave-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.photo-nav-enter-from {
+.drawer-enter-from {
   opacity: 0;
-  transform: translateX(20px) scale(0.9);
+  transform: translateY(100%);
 }
 
-.photo-nav-leave-to {
+.drawer-leave-to {
   opacity: 0;
-  transform: translateX(20px) scale(0.9);
+  transform: translateY(100%);
 }
 
-/* Responsive adjustments */
+.backdrop-enter-active,
+.backdrop-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.backdrop-enter-from,
+.backdrop-leave-to {
+  opacity: 0;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .desktop-nav {
     display: none;
   }
   
-  .mobile-bottom-nav {
+  .mobile-nav {
     display: block;
   }
 }
 
-/* Force mobile navigation to show on mobile devices */
-@media (max-width: 768px) {
-  .mobile-bottom-nav {
-    display: block !important;
+/* Safe area for devices with home indicators */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mobile-nav-bar {
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  }
+  
+  .drawer-content {
+    padding-bottom: calc(6rem + env(safe-area-inset-bottom));
   }
 }
 </style>
